@@ -39,6 +39,7 @@ module.exports = function(){
 	//Cargar los archivos de enrutamieto 
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
+	require('../app/routes/tickets.server.routes.js')(app);
 
 	//Configurar el servidor de archivos estaticos
 	app.use(express.static('./public'));

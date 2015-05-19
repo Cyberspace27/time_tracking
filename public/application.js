@@ -1,5 +1,5 @@
 var mainApplicationModuleName = 'time_tracking';
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute','users','example']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource','ngRoute','users','example', 'tickets']);
 
 mainApplicationModule.config(['$locationProvider' ,
 	function($locationProvider){

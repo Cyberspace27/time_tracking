@@ -11,6 +11,8 @@ module.exports = function(){
 
 	//Cargar el modelo "User"
 	require('../app/models/user.server.model');
+	//Cargar el modelo "Tickets"
+	require('../app/models/tickets.server.model');
 	//Devolver la Instancia de conexion a Mongoose
 	return db;
 

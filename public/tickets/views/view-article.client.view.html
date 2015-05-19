@@ -1,0 +1,16 @@
+<!-- La view ticket -->
+<section data-ng-controller="TicketsController" data-ng-init="findOne()">
+	<h1 data-ng-bind="ticket.ticketId"></h1>
+	<!--Mostrar los botonoes de edicion para el creaddor del articulo -->
+	<div data-ng-show="authentication.user._id == ticket.creator._id">
+		<a href="/#!/tickets/{{ticket._id}}/edit">edit</a>
+		<a href="#" data-ng-click="delete();">delete</a>
+	</div>
+	<small>
+		<em>Postear</em>
+		<em data-ng-bind="ticket.creado | date:'mediumDate'"></em>
+		<em>by</em>
+		<em data-ng-bind="tiket.creador.fullName"></em>
+	</small>
+	<p data-ng-bind="ticket.contenido"></p>
+</section>

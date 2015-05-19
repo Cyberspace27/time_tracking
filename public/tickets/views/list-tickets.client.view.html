@@ -1,0 +1,21 @@
+<!-- La view listar tickets-->
+
+<section data-ng-controller="TicketsController" data-ng-init="find()">
+	<h1>Tickets</h1>
+	<ul>
+		<!-- La lista de tickets-->
+		<li data-ng-repeat="ticket in tickets">
+		Si hay tickets
+			<a data-ng-href="#!/tickets/{{ticket._id}}"  data-ng-bind="ticket.ticketId"></a>
+			<br>
+			<small data-ng-bind="ticket.creado | date:'medium'"></small>
+			<small></small>
+			<small data-ng-bind="ticket.creador.fullName"></small>
+			<p data-ng-bind="ticket.ticketId"></p>
+		</li>
+	</ul>
+	<!-- Si no hay tickets en la lista, sugerimos al usuario que cree un nuevo ticket-->
+	<div data-ng-hide="!tickets || tickets.length">
+		Au no hay tickets, ¿Por que no <a href="#!/tickets/create">Creas uno</a>
+	</div>
+</section>

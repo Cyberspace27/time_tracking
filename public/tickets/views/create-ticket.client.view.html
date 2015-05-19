@@ -1,0 +1,26 @@
+<!--La view create ticket-->
+<section data-ng-controller="TicketsController">
+	<h1>Mostrar Dia y fecha en el que se esta trabajand...??</h1>
+	<!--El formulario nuevo articulo -->
+	<form data-ng-submit="create()" novalidate> 
+	<div>
+		<div>
+			<input type="text" data-ng-model="numTicket" id="numTicket" placeholder="#">
+			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
+			<span id="tiempo"></span>
+			<!--<input type="text" data-ng-model="tiempo" id="tiempo" placeholder="Tiempo" onclick="cronometro()">-->
+			<input type="text" data-ng-model="estado" id="estado" placeholder="Estado">
+			
+
+
+		</div>
+	</div>
+		<div>
+			<input type="submit" value="Start" onclick="cronometro()">
+		</div>
+		<!--El elemento mensaje error-->	
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>	
+</section>
