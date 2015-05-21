@@ -74,7 +74,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			}
 
 		};
-
+/*
 		//Creamos un cronometro para llevar el tiempo invertido en el ticket
 		$scope.cronometro = function(){
 			contador_s = 0;
@@ -98,7 +98,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 	   $scope.detenerse= function(){
 		clearInterval(tiempo);
        }
-	
+*/	
 	}
 	]);
 
