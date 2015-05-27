@@ -21,7 +21,17 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			//usar el metodo '$Save' de ticket para enviar una peticion POST apropiada
 			ticket.$save(function(response){
 				//si un ticket fue creado de modo correcto, redireccionar al usuario a la pagina de ticket
-				$location.path('tickets/' + response._id);
+				//linea original de la pagina articulos del tuto angularJS
+				//$location.path('tickets/' + response._id);
+
+				//Lineas sustituta para la prueba
+				$location.path('tickets/create');	
+				$scope.ticketId = "";
+				$scope.numTicket = "";
+				$scope.tiempo = "";
+				$scope.tipo = "Tipo";		
+				$scope.estado = "";
+
 			}, function(errorResponse){
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;
@@ -74,6 +84,33 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			}
 
 		};
+
+//Borrar los datos del ticket 
+$scope.borrarTicket = function(){
+$scope.numTicket = "";
+}
+
+
+//Crear un nuevo metodo controller para configurar la tabla
+$scope.tabla = function(){
+$scope.tickets = Tickets.query();
+$scope.gridOptions = {
+   	data: $scope.tickets,
+   	showGroupPanel:true,
+   	enableCellSelection:true,
+   	enableRowSelection: false,
+   	enableCellEdit:true,
+
+   	columnDefs:[
+   		{field:'$scope.numTicket', displayName:'$scope.numTicket'},
+   		{field:'$scope.ticketId', displayName:'$scope.ticketId'},
+   		{field:'$scope.tiempo', displayName:'$scope.tiempo'},
+   		{field:'$scope.tipo', displayName:'$scope.tipo'},
+   		{field:'$scope.estado', displayName:'$scope.estado'}]
+
+   };
+}
+
 /*
 		//Creamos un cronometro para llevar el tiempo invertido en el ticket
 		$scope.cronometro = function(){
@@ -99,6 +136,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		clearInterval(tiempo);
        }
 */	
+
+
 	}
 	]);
 

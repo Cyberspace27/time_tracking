@@ -1,5 +1,5 @@
 <!--La view create ticket-->
-<section data-ng-controller="TicketsController">
+<section data-ng-controller="TicketsController" data-ng-init="tabla">
 	<h1>Mostrar Dia y fecha en el que se esta trabajand...??</h1>
 	<!--El formulario nuevo articulo -->
 	<form data-ng-submit="create()" novalidate> 
@@ -7,17 +7,27 @@
 		<div>
 			<input type="text" data-ng-model="numTicket" id="numTicket" placeholder="#">
 			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
+			<input type="text" data-ng-model="tiempo" id="tiempo" placeholder="tiempo">
 			<span id="segundos">0</span>:<span id="minutos">0</span>
-			<span id="segundos">0</span>
+			<select name="tipo" data-ng-model="tipo">
+			   <option value="">Tipo</option>
+				<option value="create">create</option>
+				<option value="fix">fix</option>
+				<option value="heald">Heald</option>
+			</select>
+
 			<!--<input type="text" data-ng-model="tiempo" id="tiempo" placeholder="Tiempo" onclick="cronometro()">-->
 			<input type="text" data-ng-model="estado" id="estado" placeholder="Estado">
 			
-
+		<div>
+			<input type="submit" value="Start" onclick="cronometro()">
+		</div>
 
 		</div>
 	</div>
-		<div>
-			<input type="submit" value="Start" onclick="cronometro()">
+		<div id="tablaTickets">
+		<button class="btn btn-success" ng-click="showModal()">Añadir Nuevo Miembro</button>
+		<div class="gridStyles" ng-grid="gridOptions">
 		</div>
 		<!--El elemento mensaje error-->	
 		<div data-ng-show="error">
