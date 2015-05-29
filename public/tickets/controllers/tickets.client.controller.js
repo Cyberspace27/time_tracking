@@ -2,8 +2,8 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
-	function($scope, $routeParams, $location, Authentication, Tickets){
+angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets','ngGrid',
+	function($scope, $routeParams, $location, Authentication, Tickets, ngGrid){
 		//Exponer el service Authencation
 		$scope.authentication = Authentication;
         //Variable 'tiempo' para guardar el dato del tiempo

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title><%= title %></title>
-		<script type="text/javascript" src="/js/script.js"></script>
+		<link rel="stylesheet" type="text/css" href="/lib/ng-grid/ng-grid.css">
 	</head>
 	<body>
 		
@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 			window.user = <%- user || 'null' %>;
 		</script>
-
+		<script type="text/javascript" src="/js/script.js"></script>
 		<script type="text/javascript" src="/lib/angular/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
 		<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>		
@@ -28,6 +28,7 @@
 		<script type="text/javascript" src="/users/users.client.module.js"></script>
 		<script type="text/javascript" src="/users/services/aunthentication.client.service.js"></script>
 		<script type="text/javascript" src="/application.js"></script>
+		<script type="text/javascript" src="/lib/ng-grid/ng-grid-2.0.14.min.js"></script>
 	</body>
 </html>
 	

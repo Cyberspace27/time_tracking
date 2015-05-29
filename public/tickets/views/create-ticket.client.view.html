@@ -1,6 +1,8 @@
 <!--La view create ticket-->
 <section data-ng-controller="TicketsController" data-ng-init="tabla">
-	<h1>Mostrar Dia y fecha en el que se esta trabajand...??</h1>
+
+	<h1>Mostrar Dia y fecha en el que se esta trabajand...</h1>
+
 	<!--El formulario nuevo articulo -->
 	<form data-ng-submit="create()" novalidate> 
 	<div>
@@ -25,6 +27,7 @@
 
 		</div>
 	</div>
+	</form>
 		<div id="tablaTickets">
 		<button class="btn btn-success" ng-click="showModal()">Añadir Nuevo Miembro</button>
 		<div class="gridStyles" ng-grid="gridOptions">
@@ -32,6 +35,5 @@
 		<!--El elemento mensaje error-->	
 		<div data-ng-show="error">
 			<strong data-ng-bind="error"></strong>
-		</div>
-	</form>	
+		</div>	
 </section>
