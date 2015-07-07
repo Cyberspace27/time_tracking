@@ -1,18 +1,20 @@
 <!--La view create ticket-->
-<section data-ng-controller="TicketsController" data-ng-init="tabla">
+<section data-ng-controller="TicketsController" >
 
-	<h1>Mostrar Dia y fecha en el que se esta trabajand...</h1>
+	<h1 ng-mode="Date()">Mostrar Dia y fecha en el que se esta trabajand...</h1>
 
 	<!--El formulario nuevo articulo -->
 	<form data-ng-submit="create()" novalidate> 
 	<div>
 		<div>
-			<input type="text" data-ng-model="numTicket" id="numTicket" placeholder="#">
+			<input type="text" data-ng-model="numTicket" id="numTicket"> 
+			<span id="contaTicket" data-ng-model="numTicket" ></span>
+
 			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
-			<input type="text" data-ng-model="tiempo" id="tiempo" placeholder="tiempo">
-			<span id="segundos">0</span>:<span id="minutos">0</span>
+			<input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo">
+			<span id="">0</span>:<span id="minutos">0</span>
 			<select name="tipo" data-ng-model="tipo">
-			   <option value="">Tipo</option>
+			   <option value="Tipo">Tipo</option>
 				<option value="create">create</option>
 				<option value="fix">fix</option>
 				<option value="heald">Heald</option>
@@ -22,18 +24,14 @@
 			<input type="text" data-ng-model="estado" id="estado" placeholder="Estado">
 			
 		<div>
-			<input type="submit" value="Start" onclick="cronometro()">
+			<input type="submit" value="Start" onclick="cronometro(); numTicket=2;" >
 		</div>
 
 		</div>
-	</div>
-	</form>
-		<div id="tablaTickets">
-		<button class="btn btn-success" ng-click="showModal()">Añadir Nuevo Miembro</button>
-		<div class="gridStyles" ng-grid="gridOptions">
-		</div>
-		<!--El elemento mensaje error-->	
+	</div>	
+	<!--El elemento mensaje error-->	
 		<div data-ng-show="error">
 			<strong data-ng-bind="error"></strong>
-		</div>	
+		</div>
+	</form>
 </section>

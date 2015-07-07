@@ -14,9 +14,6 @@ var TicketSchema = new Schema({
 		type: Number,
 		required: 'Tiempo invertido en el ticket es obligatorio'
 	},
-	numTicket: {
-		type: Number,
-	},
 	tipo: {
 		type: String,
 		required: 'Tipo del ticket es obligatorio'

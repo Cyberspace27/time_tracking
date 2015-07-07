@@ -2,22 +2,26 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets','ngGrid',
-	function($scope, $routeParams, $location, Authentication, Tickets, ngGrid){
+angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
+	function($scope, $routeParams, $location, Authentication, Tickets){
 		//Exponer el service Authencation
 		$scope.authentication = Authentication;
         //Variable 'tiempo' para guardar el dato del tiempo
         var tiempo;
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
+		
 			//Usar los campos para crear nuevos tickets
 			var ticket = new Tickets({
 				ticketId: this.ticketId,
 				tiempo: this.tiempo,
-				numTicket: this.numTicket,
+				//numTicket: this.numTicket,
 				tipo: this.tipo,
 				estado: this.estado
 			});
+			// Aumentar la variable ticket id en 1
+			//ticketId =+1;
+			//$scope.ticketId = "AAAA";
 			//usar el metodo '$Save' de ticket para enviar una peticion POST apropiada
 			ticket.$save(function(response){
 				//si un ticket fue creado de modo correcto, redireccionar al usuario a la pagina de ticket
@@ -27,9 +31,9 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				//Lineas sustituta para la prueba
 				$location.path('tickets/create');	
 				$scope.ticketId = "";
-				$scope.numTicket = "";
+				//$scope.numTicket =numTicket+1;
 				$scope.tiempo = "";
-				$scope.tipo = "Tipo";		
+				$scope.tipo = "AAAA";		
 				$scope.estado = "";
 
 			}, function(errorResponse){
@@ -37,6 +41,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				$scope.error = errorResponse.data.message;
 			});
 		};
+		
+		
 
 		//Crear un nuevo metodo controller para recuperar una lista de tickets
 		$scope.find = function(){
@@ -85,15 +91,11 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 
 		};
 
-//Borrar los datos del ticket 
-$scope.borrarTicket = function(){
-$scope.numTicket = "";
-}
-
 
 //Crear un nuevo metodo controller para configurar la tabla
 $scope.tabla = function(){
-$scope.tickets = Tickets.query();
+$scope.tickets = Tickets.find();
+//data: $scope.tickets,
 $scope.gridOptions = {
    	data: $scope.tickets,
    	showGroupPanel:true,
