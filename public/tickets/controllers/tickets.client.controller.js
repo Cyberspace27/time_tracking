@@ -4,13 +4,18 @@
 //Crear el controller 'ticket'
 angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
 	function($scope, $routeParams, $location, Authentication, Tickets){
+
 		//Exponer el service Authencation
+		
 		$scope.authentication = Authentication;
         //Variable 'tiempo' para guardar el dato del tiempo
         var tiempo;
+        $scope.numTicket = 1;
+        $scope.tipo = "Tipo";
+
+
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
-		
 			//Usar los campos para crear nuevos tickets
 			var ticket = new Tickets({
 				ticketId: this.ticketId,
@@ -19,27 +24,24 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				tipo: this.tipo,
 				estado: this.estado
 			});
-			// Aumentar la variable ticket id en 1
-			//ticketId =+1;
-			//$scope.ticketId = "AAAA";
-			//usar el metodo '$Save' de ticket para enviar una peticion POST apropiada
-			ticket.$save(function(response){
-				//si un ticket fue creado de modo correcto, redireccionar al usuario a la pagina de ticket
-				//linea original de la pagina articulos del tuto angularJS
-				//$location.path('tickets/' + response._id);
 
-				//Lineas sustituta para la prueba
+			ticket.$save(function(response){
 				$location.path('tickets/create');	
 				$scope.ticketId = "";
+
 				//$scope.numTicket =numTicket+1;
-				$scope.tiempo = "";
-				$scope.tipo = "AAAA";		
+				$scope.tiempo = "";	
 				$scope.estado = "";
 
 			}, function(errorResponse){
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;
 			});
+			
+			//se aumenta el contador de tiquetes del dia en 1
+			this.numTicket ++;
+			//Se reinicia el valor del tipo de tiquete a el valor por defecto
+			$scope.tipo = "Tipo";
 		};
 		
 		

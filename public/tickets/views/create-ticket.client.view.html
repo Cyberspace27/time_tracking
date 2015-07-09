@@ -7,13 +7,12 @@
 	<form data-ng-submit="create()" novalidate> 
 	<div>
 		<div>
-			<input type="text" data-ng-model="numTicket" id="numTicket"> 
-			<span id="contaTicket" data-ng-model="numTicket" ></span>
+			<input type="text" data-ng-model="numTicket" data-ng-bind="numTicket" id="numTicket" disabled="true">
 
 			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
 			<input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo">
 			<span id="">0</span>:<span id="minutos">0</span>
-			<select name="tipo" data-ng-model="tipo">
+			<select name="tipo" data-ng-model="tipo" >
 			   <option value="Tipo">Tipo</option>
 				<option value="create">create</option>
 				<option value="fix">fix</option>

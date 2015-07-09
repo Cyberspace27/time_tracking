@@ -2,6 +2,11 @@ var tiempo;
 function detenerse(){
 	clearInterval(tiempo);
 }
+function contadorTicketDia(){
+	var numTicket = 1;
+	numTicket ++;
+	return numTicket;
+}
 
 function cronometro(){
 	contador_s = 0;
