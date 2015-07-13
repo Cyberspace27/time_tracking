@@ -12,6 +12,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         var tiempo;
         $scope.numTicket = 1;
         $scope.tipo = "Tipo";
+        $scope.dia = new Date();
+
 
 
 	//Crear un uevo metodo controller para crear nuevos tickets

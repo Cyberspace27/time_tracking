@@ -1,13 +1,13 @@
 <!--La view create ticket-->
 <section data-ng-controller="TicketsController" >
 
-	<h1 ng-mode="Date()">Mostrar Dia y fecha en el que se esta trabajand...</h1>
+	<h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajand...</h1>
 
 	<!--El formulario nuevo articulo -->
 	<form data-ng-submit="create()" novalidate> 
 	<div>
 		<div>
-			<input type="text" data-ng-model="numTicket" data-ng-bind="numTicket" id="numTicket" disabled="true">
+			<input type="text" data-ng-model="numTicket" id="numTicket" disabled="true">
 
 			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
 			<input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo">
@@ -23,7 +23,7 @@
 			<input type="text" data-ng-model="estado" id="estado" placeholder="Estado">
 			
 		<div>
-			<input type="submit" value="Start" onclick="cronometro(); numTicket=2;" >
+			<input type="submit" value="Start" onclick="cronometro();" >
 		</div>
 
 		</div>
@@ -33,4 +33,7 @@
 			<strong data-ng-bind="error"></strong>
 		</div>
 	</form>
+
+	<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
+     <p>Aqui va la tabla...</p>
 </section>
