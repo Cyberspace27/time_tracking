@@ -1,39 +1,71 @@
 <!--La view create ticket-->
 <section data-ng-controller="TicketsController" >
+	<div class="container">
+		<h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajand...</h1>
 
-	<h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajand...</h1>
-
-	<!--El formulario nuevo articulo -->
-	<form data-ng-submit="create()" novalidate> 
-	<div>
+		<!--El formulario nuevo articulo -->
+		<form data-ng-submit="create()" novalidate> 
 		<div>
-			<input type="text" data-ng-model="numTicket" id="numTicket" disabled="true">
+			<div>
 
-			<input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId">
-			<input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo">
-			<span id="">0</span>:<span id="minutos">0</span>
-			<select name="tipo" data-ng-model="tipo" >
-			   <option value="Tipo">Tipo</option>
-				<option value="create">create</option>
-				<option value="fix">fix</option>
-				<option value="heald">Heald</option>
-			</select>
-
-			<!--<input type="text" data-ng-model="tiempo" id="tiempo" placeholder="Tiempo" onclick="cronometro()">-->
-			<input type="text" data-ng-model="estado" id="estado" placeholder="Estado">
-			
-		<div>
-			<input type="submit" value="Start" onclick="cronometro();" >
+				
+			</div>
 		</div>
+		<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
+	     <p>Aqui va la tabla...</p>	
 
-		</div>
-	</div>	
-	<!--El elemento mensaje error-->	
-		<div data-ng-show="error">
-			<strong data-ng-bind="error"></strong>
-		</div>
-	</form>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>ID Ticket</th>
+				<th>Time</th>
+				<th>Type</th>
+				<th>Estado</th>
+				<th>&nbsp;</th>
+			</tr>
 
-	<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
-     <p>Aqui va la tabla...</p>
+		   	</thead>
+			<tbody>
+		    	<tr>
+			    	<td><input type="text" data-ng-model="numTicket" id="numTicket" disabled="true"></td>
+			    	<td><input type="text" data-ng-model="ticketId" id="ticketId" placeholder="TicketId"></td>
+			    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo"></td>
+			    	<td>
+			    		<select name="tipo" data-ng-model="tipo" >
+						   <option value="Tipo">Tipo</option>
+							<option value="create">create</option>
+							<option value="fix">fix</option>
+							<option value="heald">Heald</option>
+					    </select>
+					 </td>
+					 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
+					  
+			    	<td><input class="btn btn-primary" ng-click="addContact()"type="submit" value="Start"> </td>
+			    	<td><botton class="btn btn-info" ng-click="update()">Update</botton>&nbsp;&nbsp;<botton class="btn btn-info" ng-click="deselect()">Clear</botton></td>
+
+		    	</tr>
+				<tr ng-repeat="ticket in tickets">
+					<td>hola{{numTicket}}</td>
+					<td>mira{{ticketId}}</td>
+					<td>nose{{tiempo}}</td>
+					<td>nose{{estado}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<!--El elemento mensaje error-->	
+			<div data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
+		
+
+
+
+		</form>
+
+		
+	</div>
 </section>
