@@ -23,6 +23,7 @@
 				<th>Type</th>
 				<th>Estado</th>
 				<th>&nbsp;</th>
+				<th>&nbsp;</th>
 			</tr>
 
 		   	</thead>
@@ -43,13 +44,15 @@
 					  
 			    	<td><input class="btn btn-primary" ng-click="addContact()"type="submit" value="Start"> </td>
 			    	<td><botton class="btn btn-info" ng-click="update()">Update</botton>&nbsp;&nbsp;<botton class="btn btn-info" ng-click="deselect()">Clear</botton></td>
+			    	<td>&nbsp;</td>
 
 		    	</tr>
 				<tr ng-repeat="ticket in tickets" >
-					<td data-ng-bind="ticket.numTicket">hola{{ticket.numTicket}}</td>
-					<td data-ng-bind="ticket.ticketId">mira{{ticket.ticketId}}</td>
-					<td data-ng-bind="ticket.tiempo">nose{{ticket.tiempo}}</td>
-					<td data-ng-bind="ticket.estado">nose{{ticket.estado}}</td>
+					<td data-ng-bind="ticket.numTicket">{{ticket.numTicket}}</td>
+					<td data-ng-bind="ticket.ticketId">{{ticket.ticketId}}</td>
+					<td data-ng-bind="ticket.tiempo">{{ticket.tiempo}}</td>
+					<td data-ng-bind="ticket.tipo">{{ticket.tipo}}</td>
+					<td data-ng-bind="ticket.estado">{{ticket.estado}}</td>
 					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
 					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
 				</tr>

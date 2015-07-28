@@ -43,9 +43,10 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			//se aumenta el contador de tiquetes del dia en 1
 			this.numTicket ++;
 			//Se reinicia el valor del tipo de tiquete a el valor por defecto
-			$scope.tipo = "Tipo";
+	
 		};
-		
+		//metodo para refrescar la pagina 
+
 		
 
 		//Crear un nuevo metodo controller para recuperar una lista de tickets
@@ -99,7 +100,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		$scope.tabla = function(){
 
 		}
-		
+
 
 	}
 
