@@ -1,5 +1,5 @@
 <!--La view create ticket-->
-<section data-ng-controller="TicketsController" >
+<section data-ng-controller="TicketsController" data-ng-init="find()">
 	<div class="container">
 		<h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajand...</h1>
 
@@ -45,11 +45,11 @@
 			    	<td><botton class="btn btn-info" ng-click="update()">Update</botton>&nbsp;&nbsp;<botton class="btn btn-info" ng-click="deselect()">Clear</botton></td>
 
 		    	</tr>
-				<tr ng-repeat="ticket in tickets">
-					<td>hola{{numTicket}}</td>
-					<td>mira{{ticketId}}</td>
-					<td>nose{{tiempo}}</td>
-					<td>nose{{estado}}</td>
+				<tr ng-repeat="ticket in tickets" >
+					<td data-ng-bind="ticket.numTicket">hola{{ticket.numTicket}}</td>
+					<td data-ng-bind="ticket.ticketId">mira{{ticket.ticketId}}</td>
+					<td data-ng-bind="ticket.tiempo">nose{{ticket.tiempo}}</td>
+					<td data-ng-bind="ticket.estado">nose{{ticket.estado}}</td>
 					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
 					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
 				</tr>

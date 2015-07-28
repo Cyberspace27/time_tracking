@@ -52,6 +52,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		$scope.find = function(){
 			//usar el metodo 'query' de ticket ´para enviar una peticion GET apropiada
 			$scope.tickets = Tickets.query();
+
 		};
 		// Crear un nuevo metodo controller para recuperar un unico ticket
 		$scope.findOne = function(){
@@ -98,6 +99,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		$scope.tabla = function(){
 
 		}
+		
 
 	}
 
