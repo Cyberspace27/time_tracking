@@ -4,7 +4,7 @@
 //Crear el controller 'ticket'
 angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
 	function($scope, $routeParams, $location, Authentication, Tickets){
-
+      	console.log("Hola desde el controlador");
 		//Exponer el service Authencation
 		
 		$scope.authentication = Authentication;
@@ -95,32 +95,12 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 
 		};
 
-
-//Crear un nuevo metodo controller para configurar la tabla
-$scope.tabla = function(){
-$scope.tickets = Tickets.find();
-//data: $scope.tickets,
-$scope.gridOptions = {
-   	data: $scope.tickets,
-   	showGroupPanel:true,
-   	enableCellSelection:true,
-   	enableRowSelection: false,
-   	enableCellEdit:true,
-
-   	columnDefs:[
-   		{field:'$scope.numTicket', displayName:'$scope.numTicket'},
-   		{field:'$scope.ticketId', displayName:'$scope.ticketId'},
-   		{field:'$scope.tiempo', displayName:'$scope.tiempo'},
-   		{field:'$scope.tipo', displayName:'$scope.tipo'},
-   		{field:'$scope.estado', displayName:'$scope.estado'}]
-
-   };
-}
 		$scope.tabla = function(){
-			
+
 		}
 
 	}
+
 	]);
 
 
