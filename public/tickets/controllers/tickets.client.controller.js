@@ -26,14 +26,12 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				tipo: this.tipo,
 				estado: this.estado
 			});
-
-			ticket.$save(function(response){
+            
+			ticket.$save(function(response){			
+				console.log(response);
 				$location.path('tickets/create');	
-				$scope.ticketId = "";
-
-				//$scope.numTicket =numTicket+1;
-				$scope.tiempo = "";	
-				$scope.estado = "";
+				$scope.tiempo = "";
+				$scope.tickets = Tickets.query();
 
 			}, function(errorResponse){
 				//En otro caso, presentar al usuario el mensaje de error
@@ -43,10 +41,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			//se aumenta el contador de tiquetes del dia en 1
 			this.numTicket ++;
 			//Se reinicia el valor del tipo de tiquete a el valor por defecto
-	
-		};
 		//metodo para refrescar la pagina 
-
+	};
 		
 
 		//Crear un nuevo metodo controller para recuperar una lista de tickets

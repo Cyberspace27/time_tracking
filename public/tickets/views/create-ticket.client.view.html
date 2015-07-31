@@ -14,7 +14,7 @@
 		<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
 	     <p>Aqui va la tabla...</p>	
 
-		<table class="table">
+		<table class="table" >
 			<thead>
 			<tr>
 				<th>#</th>
@@ -48,13 +48,13 @@
 
 		    	</tr>
 				<tr ng-repeat="ticket in tickets" >
-					<td data-ng-bind="ticket.numTicket">{{ticket.numTicket}}</td>
-					<td data-ng-bind="ticket.ticketId">{{ticket.ticketId}}</td>
-					<td data-ng-bind="ticket.tiempo">{{ticket.tiempo}}</td>
-					<td data-ng-bind="ticket.tipo">{{ticket.tipo}}</td>
-					<td data-ng-bind="ticket.estado">{{ticket.estado}}</td>
-					<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-					<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+					<td >{{numTicket}}</td>
+					<td >{{ticket.ticketId}}</td>
+					<td >{{ticket.tiempo}}</td>
+					<td >{{ticket.tipo}}</td>
+					<td >{{ticket.estado}}</td>
+					<td><button class="btn btn-danger" data-ng-click="delete();">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(ticket._id)">Edit</button></td>
 				</tr>
 			</tbody>
 		</table>
