@@ -10,7 +10,10 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		$scope.authentication = Authentication;
         //Variable 'tiempo' para guardar el dato del tiempo
         var tiempo;
-        $scope.numTicket = 1;
+        var conTicket = 1;
+        $scope.conTicket = 1;
+        console.log(conTicket);
+        //$scope.numTicket = 1;
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
 
