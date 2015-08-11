@@ -43,12 +43,12 @@
 		    	</tr>
 				<tr ng-repeat="ticket in tickets" >
 					<td >{{$index+1}}</td>
-					<td >{{ticket.ticketId}}</td>
+					<td ><a data-ng-href="#!/tickets/{{ticket._id}}"  data-ng-bind="ticket.ticketId"></a>{{ticket.ticketId}}</td>
 					<td >{{ticket.tiempo}}</td>
 					<td >{{ticket.tipo}}</td>
 					<td >{{ticket.estado}}</td>
-					<td><button class="btn btn-danger" data-ng-click="delete();">Remove</button></td>
-					<td><button class="btn btn-warning" ng-click="edit(ticket._id)">Edit</button></td>
+					<td><button class="btn btn-danger" data-ng-click="delete(ticket._id);">Remove</button><a href="#!" data-ng-click="delete();" >delete</a></td>
+					<td><button class="btn btn-warning"  ng-click="edit(ticket._id)">Edit</button></td>
 				</tr>
 			</tbody>
 		</table>

@@ -17,6 +17,6 @@ module.exports = function(app){
 	.put(users.requiresLogin, tickets.hasAuthorization, tickets.update)
 	.delete(users.requiresLogin, tickets.hasAuthorization, tickets.delete);
 
-	//Configurar el parametro middleware 'ticketId'
+	//Configurar el parametro middleware 'ticketId'   
 	app.param('ticketId', tickets.ticketByID);
 };

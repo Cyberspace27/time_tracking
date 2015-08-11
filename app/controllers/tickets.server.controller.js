@@ -85,8 +85,10 @@ exports.update = function(req, res){
 
 //Crear un nuevo metodo controller que borre un ticket existente
 exports.delete = function(req, res){
+	
 	// Obtener el ticket usando el objeto 'request'
 	var ticket = req.ticket;
+	console.log(ticket);
 	// Usar el metodo model 'remove' para borrar el ticket
 	ticket.remove(function(err){
 		if(err){

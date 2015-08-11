@@ -76,6 +76,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 	
 	//Crear un nuevo metodo controller para borrar un unico ticket
 		$scope.delete = function(ticket){
+			console.log(ticket);
 			//Si un ticket fue enviado al metodo, borrarlo
 			if(ticket){
 				//Usar el metodo '$remove' del ticket para borrar el ticket

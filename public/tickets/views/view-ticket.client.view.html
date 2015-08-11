@@ -1,10 +1,10 @@
 <!-- La view ticket -->
 <section data-ng-controller="TicketsController" data-ng-init="findOne()">
 	<h1 data-ng-bind="ticket.ticketId"></h1>
-	<!--Mostrar los botonoes de edicion para el creaddor del articulo -->
-	<div data-ng-show="authentication.user._id == ticket.creator._id">
+	<!--Mostrar los botonoes de edicion para el creaddor del articulo  data-ng-show="authentication.user._id == ticket.creator._id"-->
+	<div >
 		<a href="/#!/tickets/{{ticket._id}}/edit">edit</a>
-		<a href="#" data-ng-click="delete();">delete</a>
+		<a  data-ng-click="delete();">delete</a>
 	</div>
 	<small>
 		<em>Postear</em>
