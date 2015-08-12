@@ -15,7 +15,7 @@ angular.module('tickets').config(['$routeProvider',
 			templateUrl: 'tickets/views/view-ticket.client.view.html'
 		}).
 		when('/tickets/:ticketId/edit', {
-			templateUrl: 'tickets/views/edit-ticket.client.view.html'
+			templateUrl: 'tickets/views/create-ticket.client.view.html'
 		});
 	}
 ]);

@@ -88,7 +88,7 @@ exports.delete = function(req, res){
 	
 	// Obtener el ticket usando el objeto 'request'
 	var ticket = req.ticket;
-	console.log(ticket);
+	console.log("articulo desde el controlador del servidor" + ticket)
 	// Usar el metodo model 'remove' para borrar el ticket
 	ticket.remove(function(err){
 		if(err){
