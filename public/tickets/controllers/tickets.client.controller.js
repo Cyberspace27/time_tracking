@@ -4,11 +4,12 @@
 //Crear el controller 'ticket'
 angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
 	function($scope, $routeParams, $location, Authentication, Tickets){
-      	console.log("Hola desde el controlador");
+      	console.log("Hola desde el controlador mejorado" + "variable numTicket" + this.prueba);
 		//Exponer el service Authencation
 		
 		$scope.authentication = Authentication;
         //Variable 'tiempo' para guardar el dato del tiempo
+
         var tiempo;
         var conTicket = 1;
         $scope.conTicket = 1;
@@ -16,6 +17,17 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         //$scope.numTicket = 1;
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
+
+    //Funcion para cargar el numero del siguiente ticket
+       $scope.tickets = Tickets.query();
+	   $scope.array=[0];
+     
+   		$scope.updateModel = function () {
+      		
+      		for (var i=0;i<$scope.tickets;i++){
+         		console.log(i)
+      		}
+   		};
 
 
 	//Crear un uevo metodo controller para crear nuevos tickets
@@ -32,6 +44,9 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			ticket.$save(function(response){			
 				console.log(response);
 				$location.path('tickets/create');	
+				$scope.ticketId = "";
+				$scope.estado = "";
+				$scope.tipo = "Tipo";
 				$scope.tiempo = "";
 				$scope.tickets = Tickets.query();
 
@@ -66,7 +81,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			//Usar el metodo '$update' de ticket para enviar una peticion Put apropiada
 			$scope.ticket.$update(function() {
 				//si un ticket fue actualizado de modo correcto, redirijir el user a la pagina del ticket
-			$location.path('tickets/' + $scope.ticket._id);
+			$location.path('/tickets');
 			}, function(errorResponse){
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;

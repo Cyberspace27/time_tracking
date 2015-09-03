@@ -6,7 +6,7 @@ angular.module('tickets').config(['$routeProvider',
 	function($routeProvider){
 		$routeProvider.
 		when('/tickets', {
-			templateUrl: 'tickets/views/list-tickets.client.view.html'
+			templateUrl: 'tickets/views/create-ticket.client.view.html'
 		}).
 		when('/tickets/create', {
 			templateUrl: 'tickets/views/create-ticket.client.view.html'
