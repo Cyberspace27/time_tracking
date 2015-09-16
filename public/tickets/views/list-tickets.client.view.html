@@ -1,21 +1,72 @@
-<!-- La view listar tickets-->
+<!--La view create ticket-->
+<section data-ng-controller="TicketsController">
+	<div class="container">
+		<center><h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando...</h1></center>
 
-<section data-ng-controller="TicketsController" data-ng-init="find()">
-	<h1>Tickets</h1>
-	<ul>
-		<!-- La lista de tickets-->
-		<li data-ng-repeat="ticket in tickets">
-		Si hay tickets
-			<a data-ng-href="#!/tickets/{{ticket._id}}"  data-ng-bind="ticket.ticketId"></a>
-			<br>
-			<small data-ng-bind="ticket.creado | date:'medium'"></small>
-			<small></small>
-			<small data-ng-bind="ticket.creador.fullName"></small>
-			<p data-ng-bind="ticket.tipo"></p>
-		</li>
-	</ul>
-	<!-- Si no hay tickets en la lista, sugerimos al usuario que cree un nuevo ticket-->
-	<div data-ng-hide="!tickets || tickets.length">
-		Au no hay tickets, ¿Por que no <a href="#!/tickets/create">Creas uno</a>
+		<!--El formulario nuevo articulo -->
+		<form data-ng-submit="create()" data-ng-init="find()" novalidate> 
+		<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
+	     <div class="col-xs-12 col-sm-8">
+	     	<div class="input-group input-group-lg">
+		       <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+		       <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Go!</button>
+		       </span>
+           </div><!-- /input-group -->
+	     </div>
+	     <br>
+		<table class="table" >
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>ID Ticket</th>
+				<th>Time</th>
+				<th>Type</th>
+				<th>Estado</th>
+				<th>&nbsp;</th>
+			</tr>
+
+		   	</thead>
+			<tbody>
+		    	<tr >
+			    	<td><input type="text" disabled="true" placeholder=" #  {{tickets.length+1}}" >
+			    	
+			    	</td>
+			    	<td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" ></td>
+			    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo"></td>
+			    	<td>
+			    		<select name="tipo" data-ng-model="tipo" >
+						   <option value="Tipo">Tipo</option>
+							<option value="create">create</option>
+							<option value="fix">fix</option>
+							<option value="heald">Heald</option>
+					    </select>
+					 </td>
+					 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
+					  
+			    	<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
+			    	<td>&nbsp;</td>
+
+		    	</tr>
+				<tr ng-repeat="ticket in tickets | filter:searchText " style="background-color:{{$even?'white':'white'}}">
+					<td data-ng-model="prueba">{{$index+1}}</td>
+					<td >{{ticket.ticketId}}</td>
+					<td >{{ticket.tiempo}}</td>
+					<td >{{ticket.tipo}}</td>
+					<td >{{ticket.estado}}</td>
+					<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button data-ng-click="ticketsCount()">contador prueba</button> 
+		
+		<!--El elemento mensaje error-->	
+			<div data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
+		</form>
+
+		
 	</div>
 </section>
