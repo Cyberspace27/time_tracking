@@ -21,9 +21,9 @@
 
 		   	</thead>
 			<tbody>
-		    	<tr>
-			    	<td><input type="text" data-ng-model="conTicket" id="conTicket" disabled="true" placeholder="#" data-ng-change="updateModel()">
-			    	{{conTicket}}
+		    	<tr >
+			    	<td><input type="text" disabled="true" placeholder=" #  {{tickets.length+1}}" >
+			    	
 			    	</td>
 			    	<td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" ></td>
 			    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo"></td>
@@ -37,7 +37,7 @@
 					 </td>
 					 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
 					  
-			    	<td><input class="btn btn-primary" ng-click="addContact()"type="submit" value="Ingresar"> </td>
+			    	<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
 			    	<td>&nbsp;</td>
 
 		    	</tr>
@@ -52,7 +52,7 @@
 				</tr>
 			</tbody>
 		</table>
-		{{prueba}}
+		<button data-ng-click="ticketsCount()">contador prueba</button> 
 		
 		<!--El elemento mensaje error-->	
 			<div data-ng-show="error">

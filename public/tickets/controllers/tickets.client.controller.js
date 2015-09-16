@@ -4,30 +4,18 @@
 //Crear el controller 'ticket'
 angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
 	function($scope, $routeParams, $location, Authentication, Tickets){
-      	console.log("Hola desde el controlador mejorado" + "variable numTicket" + this.prueba);
+      	
 		//Exponer el service Authencation
 		
 		$scope.authentication = Authentication;
-        //Variable 'tiempo' para guardar el dato del tiempo
 
+        //Se iniciaiza las Variables 'tiempo, tipo y dia'
         var tiempo;
-        var conTicket = 1;
-        $scope.conTicket = 1;
-        console.log(conTicket);
-        //$scope.numTicket = 1;
+
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
 
-    //Funcion para cargar el numero del siguiente ticket
-       $scope.tickets = Tickets.query();
-	   $scope.array=[0];
-     
-   		$scope.updateModel = function () {
-      		
-      		for (var i=0;i<$scope.tickets;i++){
-         		console.log(i)
-      		}
-   		};
+
 
 
 	//Crear un uevo metodo controller para crear nuevos tickets
@@ -66,8 +54,13 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 		$scope.find = function(){
 			//usar el metodo 'query' de ticket ´para enviar una peticion GET apropiada
 			$scope.tickets = Tickets.query();
-
+			 
 		};
+		
+	
+
+
+
 		// Crear un nuevo metodo controller para recuperar un unico ticket
 		$scope.findOne = function(){
 			//Usar el metodo 'get' de ticket para enviar una peticion GET apropiada
