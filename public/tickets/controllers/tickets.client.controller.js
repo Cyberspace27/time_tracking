@@ -15,7 +15,15 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
 
-
+	//Crear un uevo metodo controller para sumar e tiempo
+		$scope.sumaTiempo = function(){
+				var sumatiempo = 0 ;
+		      angular.forEach($scope.tickets, function(eachtime){
+		        sumatiempo=eachtime.tiempo+sumatiempo;
+		          console.log(sumatiempo);
+		      });
+		    
+		};
 
 
 	//Crear un uevo metodo controller para crear nuevos tickets

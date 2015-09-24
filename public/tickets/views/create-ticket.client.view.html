@@ -7,63 +7,73 @@
 		<form data-ng-submit="create()" data-ng-init="find()" novalidate> 
 		<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
 	     <p>Aqui va la tabla...</p>	
+	     <div class="row">
+			<div class="col-sm-6 col-sm-offset-1">
 
-		<table class="table" >
-			<thead>
-			<tr>
-				<th>#</th>
-				<th>ID Ticket</th>
-				<th>Time</th>
-				<th>Type</th>
-				<th>Estado</th>
-				<th>&nbsp;</th>
-			</tr>
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>#</th>
+						<th>ID Ticket</th>
+						<th>Time</th>
+						<th>Type</th>
+						<th>Estado</th>
+						<th>&nbsp;</th>
+					</tr>
 
-		   	</thead>
-			<tbody>
-		    	<tr >
-			    	<td><input type="text" disabled="true" placeholder=" #  {{tickets.length+1}}" >
-			    	
-			    	</td>
-			    	<td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" ></td>
-			    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo"></td>
-			    	<td>
-			    		<select name="tipo" data-ng-model="tipo" >
-						   <option value="Tipo">Tipo</option>
-							<option value="create">create</option>
-							<option value="fix">fix</option>
-							<option value="heald">Heald</option>
-					    </select>
-					 </td>
-					 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
-					  
-			    	<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
-			    	<td>&nbsp;</td>
+				   	</thead>
+					<tbody>
+				    	<tr >
+					    	<td><input type="text" disabled="true" placeholder=" #  {{tickets.length+1}}" >
+					    	
+					    	</td>
+					    	<td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" ></td>
+					    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo"></td>
+					    	<td>
+					    		<select name="tipo" data-ng-model="tipo" >
+								   <option value="Tipo">Tipo</option>
+									<option value="create">create</option>
+									<option value="fix">fix</option>
+									<option value="heald">Heald</option>
+							    </select>
+							 </td>
+							 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
+							  
+					    	<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
+					    	<td>&nbsp;</td>
 
-		    	</tr>
-				<tr ng-repeat="ticket in tickets" style="background-color:{{$even?'white':'white'}}">
-					<td data-ng-model="prueba">{{$index+1}}</td>
-					<td >{{ticket.ticketId}}</td>
-					<td >{{ticket.tiempo}}</td>
-					<td >{{ticket.tipo}}</td>
-					<td >{{ticket.estado}}</td>
-					<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<button data-ng-click="ticketsCount()">contador prueba</button> 
-		
-		<!--El elemento mensaje error-->	
-			<div data-ng-show="error">
-				<strong data-ng-bind="error"></strong>
-			</div>
-		
+				    	</tr>
+						<tr ng-repeat="ticket in tickets" style="background-color:{{$even?'white':'white'}}">
+							<td data-ng-model="prueba">{{$index+1}}</td>
+							<td >{{ticket.ticketId}}</td>
+							<td >{{ticket.tiempo}}</td>
+							<td >{{ticket.tipo}}</td>
+							<td >{{ticket.estado}}</td>
+							<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
+				<!--El elemento mensaje error-->	
+					<div data-ng-show="error">
+						<strong data-ng-bind="error"></strong>
+					</div>
+				</form>
 
+				<div class="col-sm-4 col-sm-offset-1 text-center">
+						<form name="myForm">
+							<div class="form-group">
+								<input type="text" class="form-control input-lg text-center" placeholder="Nombre" ng-model="sumatiempo" required>
+								<br>
+							</div>
 
-		</form>
-
+							<!-- Acciones que podemos realizar en el formulario -->
+							<button type="submit" class="btn btn-success btn-lg" ng-click="sumaTiempo()" ng-disabled="myForm.$invalid || selected">Sumar</button>
+						</form>
+					</div>
+		</div>			
+	</div>
 		
 	</div>
 </section>
