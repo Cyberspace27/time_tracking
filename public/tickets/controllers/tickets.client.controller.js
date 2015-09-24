@@ -15,13 +15,15 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
+        var sumatiempo = 0 ;
 	//Crear un uevo metodo controller para sumar e tiempo
 		$scope.sumaTiempo = function(){
-				var sumatiempo = 0 ;
+				
 		      angular.forEach($scope.tickets, function(eachtime){
 		        sumatiempo=eachtime.tiempo+sumatiempo;
 		          console.log(sumatiempo);
 		      });
+		      $scope.sumatiempo = sumatiempo ;
 		    
 		};
 
@@ -54,7 +56,9 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			});
 			
 			//se aumenta el contador de tiquetes del dia en 1
-			this.numTicket ++;
+			//this.numTicket ++;
+
+			$scope.sumaTiempo();
 			//Se reinicia el valor del tipo de tiquete a el valor por defecto
 		//metodo para refrescar la pagina 
 	};
