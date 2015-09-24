@@ -38,8 +38,17 @@
 							    </select>
 							 </td>
 							 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
-							  
-					    	<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
+							  <td>
+							  	<select name="sendto" data-ng-model="sendto" >
+								   <option value="Sendto">Sendto</option>
+								   <option value="AggOpps">Verificar</option>
+									<option value="TechImpt">TechImp</option>
+									<option value="NonTect">NonTect</option>
+									<option value="AggOpps">AggOpps</option>
+							    </select>
+							  </td>
+							  <td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
+					    	<td></td>
 					    	<td>&nbsp;</td>
 
 				    	</tr>
@@ -49,6 +58,7 @@
 							<td >{{ticket.tiempo}}</td>
 							<td >{{ticket.tipo}}</td>
 							<td >{{ticket.estado}}</td>
+							<td >{{ticket.sendto}}</td>
 							<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
 							</td>
 						</tr>

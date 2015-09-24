@@ -67,6 +67,7 @@ exports.update = function(req, res){
 	ticket.tiempo = req.body.tiempo;
 	ticket.tipo = req.body.tipo;
 	ticket.estado = req.body.estado;
+	ticket.sendto = req.body.sendto;
 
 	// Intentar salvar el ticket actualizado
 	ticket.save(function(err){
@@ -105,7 +106,7 @@ exports.delete = function(req, res){
 
 //Crear un nuevo controller middkeware que recupera un unico ticket existente
 exports.ticketByID = function(req, res, next, id){
-	//usar el metodo 'findById' para encontrar un unici ticket
+	//usar el metodo 'findById' para encontrar un unico ticket
 	Ticket.findById(id).populate('creador', 'firstName lastName fullName').exec(function(err, ticket){
 		if(err)return next(err);
 		if(!ticket) return next(new Error('Fallo al cargar el articulo' + id));
@@ -120,7 +121,7 @@ exports.hasAuthorization = function(req, res, next){
 	//si el usuario actual no es el creador del articulo, enviar el mensaje de errror apropiado
 	if (req.ticket.creador.id !== req.user.id) {
 		return res.status(403).send({
-			message: 'Uuario no esta autorizado'
+			message: 'Usuario no esta autorizado'
 		});
 	}
 	//llamar al siguiente middleware

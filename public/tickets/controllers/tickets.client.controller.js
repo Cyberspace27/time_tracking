@@ -14,7 +14,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
-
+        $scope.sendto = "Sendto";
 	//Crear un uevo metodo controller para sumar e tiempo
 		$scope.sumaTiempo = function(){
 				var sumatiempo = 0 ;
@@ -34,7 +34,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				tiempo: this.tiempo,
 				//numTicket: this.numTicket,
 				tipo: this.tipo,
-				estado: this.estado
+				estado: this.estado,
+				sendto: this.sendto
 			});
             
 			ticket.$save(function(response){			
@@ -44,6 +45,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				$scope.estado = "";
 				$scope.tipo = "Tipo";
 				$scope.tiempo = "";
+				$scope.sendto = "Sendto";
 				$scope.tickets = Tickets.query();
 
 			}, function(errorResponse){
