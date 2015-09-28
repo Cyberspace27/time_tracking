@@ -15,18 +15,8 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
-        var sumatiempo = 0 ;
-	//Crear un uevo metodo controller para sumar e tiempo
-		$scope.sumaTiempo = function(){
-				
-		      angular.forEach($scope.tickets, function(eachtime){
-		        sumatiempo=eachtime.tiempo+sumatiempo;
-		          console.log(sumatiempo);
-		      });
-		      $scope.sumatiempo = sumatiempo ;
-		    
-		};
-
+        var sumatiempo ;
+        
 
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
@@ -54,15 +44,23 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;
 			});
-			
-			//se aumenta el contador de tiquetes del dia en 1
-			//this.numTicket ++;
-
+			//se llama al metodo 'sumaTiempo' del dia	actual		
 			$scope.sumaTiempo();
-			//Se reinicia el valor del tipo de tiquete a el valor por defecto
-		//metodo para refrescar la pagina 
+
 	};
-		
+		//Crear un uevo metodo controller para sumar e tiempo
+		$scope.sumaTiempo = function(){
+			 //Iniciar la variable 'sumatiempo' con valor de 0  
+				sumatiempo=0;
+			//Siglo agular for each para accesar a cada uno de los valores de array tickets	
+		      angular.forEach($scope.tickets, function(eachtime){
+		      	//se suma el dato 'tiempo' de cada tiket dentro del array tickets
+		        sumatiempo=eachtime.tiempo+sumatiempo;
+		      });
+		      //Se le suma el nuevo dato y se carga a el $scope.sumatiempo
+		      $scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
+		};
+
 
 		//Crear un nuevo metodo controller para recuperar una lista de tickets
 		$scope.find = function(){
