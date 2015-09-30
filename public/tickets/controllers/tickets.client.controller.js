@@ -2,8 +2,8 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').controller('TicketsController', ['$scope', '$routeParams', '$location', 'Authentication', 'Tickets',
-	function($scope, $routeParams, $location, Authentication, Tickets){
+angular.module('tickets').controller('TicketsController', ['$scope', '$filter', '$routeParams', '$location', 'Authentication', 'Tickets',
+	function($scope, $filter , $routeParams, $location, Authentication, Tickets){
       	
 		//Exponer el service Authencation
 		
@@ -16,6 +16,11 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
         var sumatiempo ;
+        var  hoy;
+        var contadorDiaActual ;
+        $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
+        
+
         
 
 	//Crear un uevo metodo controller para crear nuevos tickets
@@ -46,6 +51,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$routePara
 			});
 			//se llama al metodo 'sumaTiempo' del dia	actual		
 			$scope.sumaTiempo();
+			$contadorDiaActual++;
 
 	};
 		//Crear un uevo metodo controller para sumar e tiempo
