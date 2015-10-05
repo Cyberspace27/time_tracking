@@ -17,7 +17,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
         $scope.sendto = "Sendto";
         var sumatiempo ;
         var  hoy;
-        var contadorDiaActual ;
+        var contadorDiaActual = 0;
         $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
         
 
@@ -51,7 +51,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 			});
 			//se llama al metodo 'sumaTiempo' del dia	actual		
 			$scope.sumaTiempo();
-			$contadorDiaActual++;
+			$scope.contadorDiaActual++;
 
 	};
 		//Crear un uevo metodo controller para sumar e tiempo
