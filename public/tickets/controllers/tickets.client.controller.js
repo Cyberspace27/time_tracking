@@ -55,14 +55,14 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 
 	};
 
-		//Crear un nuevo metodo usando el modulo $interval para actualizar la fecha actual cada 7 segundos
+		//Crear un nuevo metodo usando el modulo $interval para actualizar la fecha actual cada 3 segundos
 		$interval(
 					function incrementB() {
 
 						$scope.dia = new Date();
 
 					},
-					( 7 * 1000 )
+					( 3 * 1000 )
 				);
 		//Crear un uevo metodo controller para sumar e tiempo
 		$scope.sumaTiempo = function(){
@@ -82,7 +82,6 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 		$scope.find = function(){
 			//usar el metodo 'query' de ticket ´para enviar una peticion GET apropiada
 			$scope.tickets = Tickets.query();
-			 
 		};
 		
 	
@@ -109,7 +108,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 			});	
 		};
 	
-	//Crear un nuevo metodo controller para borrar un unico ticket
+	//Crear un nuevo metodo controller para borrar un unico ticket "ESTE METODO SE DEBE DE LIMPIAR"
 		$scope.delete = function(ticket){
 			console.log("articulo desde el controlador cliente "   + ticket)
 			//Si un ticket fue enviado al metodo, borrarlo
@@ -132,6 +131,26 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 
 		};
 
+		// crear un nuevo metodo controller invocando el metodo init para sumar los tiempos de los tickest
+		var init = function(){
+			//$scope.tickets = Tickets.query();
+		 //Iniciar la variable 'sumatiempo' con valor de 0 
+
+			sumatiempo=0;
+		//Siglo agular for each para accesar a cada uno de los valores de array tickets 
+			angular.forEach($scope.tickets, function(eachtime){
+			//se suma el dato 'tiempo' de cada tiket dentro del array tickets
+				sumatiempo=eachtime.tiempo+sumatiempo;
+				console.log("No paso");
+			});
+		//Se le suma el nuevo dato y se carga a el $scope.sumatiempo
+			$scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
+			console.log("No paso nada "+$scope.sumatiempo);
+
+			console.log("No paso nada "+ $scope.tickets);
+		}
+		//We init the app
+		init();
 
 	}
 

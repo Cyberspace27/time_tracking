@@ -52,10 +52,10 @@
 					    	<td>&nbsp;</td>
 
 				    	</tr>
-						<tr ng-repeat="ticket in tickets | filter:hoy" style="background-color:{{$even?'white':'white'}}">
+						<tr ng-repeat="ticket in tickets" style="background-color:{{$even?'white':'white'}}">
 							<td width="50" height="10">{{$index+1}}</td>
 							<td width="50" height="10"><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}">{{ticket.ticketId}}</a></td>
-							<td width="50" height="10">{{ticket.tiempo}}</td>
+							<td width="50" height="10" ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
 							<td width="50" height="10">{{ticket.tipo}}</td>
 							<td width="50" height="10">{{ticket.estado}}</td>
 							<td width="50" height="10">{{ticket.sendto}}</td>
@@ -75,7 +75,7 @@
    				 	<form name="myForm">
 						<div class="form-group">
 							<label>Tiempo Registrado</label>
-								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatiempo}}
+								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatotal=sumatiempo||sumatime}}
 								<br>
 								<table class="table table-striped table-condensed">
 				        	 	   	<thead>
