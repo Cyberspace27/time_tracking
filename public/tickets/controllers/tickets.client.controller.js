@@ -2,8 +2,8 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').controller('TicketsController', ['$scope', '$filter', '$routeParams', '$location', 'Authentication', 'Tickets',
-	function($scope, $filter , $routeParams, $location, Authentication, Tickets){
+angular.module('tickets').controller('TicketsController', ['$scope', '$filter', '$routeParams', '$interval', '$location', 'Authentication', 'Tickets',
+	function($scope, $filter , $routeParams, $interval, $location, Authentication, Tickets){
       	
 		//Exponer el service Authencation
 		
@@ -54,6 +54,16 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 			$scope.contadorDiaActual++;
 
 	};
+
+		//Crear un nuevo metodo usando el modulo $interval para actualizar la fecha actual cada 7 segundos
+		$interval(
+					function incrementB() {
+
+						$scope.dia = new Date();
+
+					},
+					( 7 * 1000 )
+				);
 		//Crear un uevo metodo controller para sumar e tiempo
 		$scope.sumaTiempo = function(){
 			 //Iniciar la variable 'sumatiempo' con valor de 0  
