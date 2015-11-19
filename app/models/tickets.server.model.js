@@ -18,10 +18,6 @@ var TicketSchema = new Schema({
 		type: String,
 		required: 'Tipo del ticket es obligatorio'
 	},
-	estado: {
-		type: String,
-		required: 'Tipo del ticket es obligatorio'
-	},
 	sendto: {
 		type: String,
 		required: 'Tipo del ticket es obligatorio'

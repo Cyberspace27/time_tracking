@@ -14,7 +14,6 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
-        $scope.sendto = "Sendto";
         var sumatiempo ;
         var  hoy;
         var contadorDiaActual = 0;
@@ -31,7 +30,6 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 				tiempo: this.tiempo,
 				//numTicket: this.numTicket,
 				tipo: this.tipo,
-				estado: this.estado,
 				sendto: this.sendto
 			});
             
@@ -39,7 +37,6 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 				console.log(response);
 				$location.path('tickets/create');	
 				$scope.ticketId = "";
-				$scope.estado = "";
 				$scope.tipo = "Tipo";
 				$scope.tiempo = "";
 				$scope.sendto = "Sendto";

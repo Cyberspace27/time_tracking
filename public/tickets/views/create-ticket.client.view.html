@@ -5,8 +5,7 @@
 
 		<!--El formulario nuevo articulo -->
 		<form data-ng-submit="create()" data-ng-init="find()" novalidate> 
-		<!--Aqui va la tabla pero todavia no estoy seguo de como crearla-->
-	     <p>Aqui va la tabla...</p>	
+	     
 	     <div class="row">
 			<div class="col-sm-6 col-sm-offset-1">
 
@@ -17,7 +16,7 @@
 						<th>ID Ticket</th>
 						<th>Time</th>
 						<th>Type</th>
-						<th>Estado</th>
+						<th>&nbsp;</th>
 						<th>&nbsp;</th>
 					</tr>
 
@@ -37,7 +36,6 @@
 									<option value="heald">Heald</option>
 							    </select>
 							 </td>
-							 <td><input type="text" data-ng-model="estado" id="estado" placeholder="Estado"></td>
 							  <td>
 							  	<select name="sendto" data-ng-model="sendto" >
 								   <option value="Sendto">Sendto</option>
@@ -57,7 +55,6 @@
 							<td width="50" height="10"><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}">{{ticket.ticketId}}</a></td>
 							<td width="50" height="10" ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
 							<td width="50" height="10">{{ticket.tipo}}</td>
-							<td width="50" height="10">{{ticket.estado}}</td>
 							<td width="50" height="10">{{ticket.sendto}}</td>
 							<td width="50" height="10"><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
 							</td>

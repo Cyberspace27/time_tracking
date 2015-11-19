@@ -15,7 +15,7 @@
 				<th>ID Ticket</th>
 				<th>Time</th>
 				<th>Type</th>
-				<th>Estado</th>
+				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 			</tr>
 
@@ -33,7 +33,6 @@
 							<option value="heald">Heald</option>
 					    </select>
 					 </td>
-					 <td><input type="text" data-ng-model="ticket.estado" id="estado" placeholder="Estado"></td>
 					 <td>
 							  	<select name="sendto" data-ng-model="sendto" >
 								   <option value="Sendto">Sendto</option>
@@ -53,7 +52,6 @@
 							<td width="50" height="30"><a href="https://www.google.com/?gws_rd=ssl">{{ticket.ticketId}}</a></td>
 							<td width="50" height="30">{{ticket.tiempo}}</td>
 							<td width="50" height="30">{{ticket.tipo}}</td>
-							<td width="50" height="30">{{ticket.estado}}</td>
 							<td width="50" height="30">{{ticket.sendto}}</td>
 							<td width="50" height="30"><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
 							</td>
