@@ -14,6 +14,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
+        $scope.sendto = "Sendto";
         var sumatiempo ;
         var  hoy;
         var contadorDiaActual = 0;
