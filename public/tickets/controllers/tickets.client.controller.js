@@ -40,7 +40,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 				$scope.ticketId = "";
 				$scope.tipo = "Tipo";
 				$scope.tiempo = "";
-				$scope.sendto = "Sendto";
+				$scope.sendto = "Sendto"; 
 				$scope.tickets = Tickets.query();
 
 			}, function(errorResponse){

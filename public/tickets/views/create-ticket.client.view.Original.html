@@ -1,12 +1,15 @@
-
+<!--La view create ticket-->
 <section data-ng-controller="TicketsController">
 	<div class="container">
 		<center><h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando...</h1></center>
 
 		<div class="row">
-			<div class="col-md-9">
-				<form data-ng-submit="create()" data-ng-init="find()" novalidate> 
-				<table  class="table table-striped table-condensed" WIDTH="60%" >
+
+		     <!--class="col-sm-6 col-sm-offset-1"-->
+			 <div class="col-sm-6 col-sm-offset-1">
+			 			<!--El formulario nuevo articulo -->
+		       <form data-ng-submit="create()" data-ng-init="find()" novalidate> 
+				<table class="table table-striped table-condensed"  WIDTH="60%" >
 					<thead>
 					<tr>
 						<th>#</th>
@@ -65,14 +68,16 @@
 					</div>
 
 				</form>
-			</div>
-			<div class="col-md-3">
-				<form name="myForm">
+
+			 </div>
+
+			 <div class="col-sm-4 col-sm-offset-1" >
+   				 	<form name="myForm">
 						<div class="form-group">
 							<label>Tiempo Registrado</label>
 								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatotal=sumatiempo||sumatime}}
 								<br>
-								<table WIDTH="40%">
+								<table class="table table-striped table-condensed" WIDTH="40%">
 				        	 	   	<thead>
 										<tr>
 											<th>Ticket Creado</th>
@@ -88,11 +93,11 @@
 
 							<!-- Acciones que podemos realizar en el formulario -->
 						<button type="submit" class="btn btn-success btn-lg" ng-click="sumaTiempo()" ng-disabled="myForm.$invalid || selected">Sumar</button>
-				</form>
-			</div>
+					</form>
+				</div>
+
+
 		</div>
 
 	</div>
-
 </section>
-

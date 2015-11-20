@@ -66,7 +66,7 @@ exports.update = function(req, res){
 	ticket.ticketId = req.body.ticketId;
 	ticket.tiempo = req.body.tiempo;
 	ticket.tipo = req.body.tipo;
-	ticket.sendto = req.body.sendto; 
+	ticket.sendto = req.body.sendto;  
 
 	// Intentar salvar el ticket actualizado
 	ticket.save(function(err){
