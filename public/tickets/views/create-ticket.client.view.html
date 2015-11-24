@@ -72,23 +72,48 @@
 							<label>Tiempo Registrado</label>
 								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatotal=sumatiempo||sumatime}}
 								<br>
-								<table WIDTH="40%">
-				        	 	   	<thead>
-										<tr>
-											<th>Ticket Creado</th>
-										<th>Fecha Actual</th>
-									</thead>
-									<tbody>
-										<tr ng-repeat="ticket in tickets | filter:hoy" style="background-color:{{$even?'white':'white'}}">
-											<td width="50" height="10">{{ticket.creado}}</td>
-											<td width="50" height="10">{{hoy}}</td>
-										</tr>
-									</tbody>		
 						</div>
-
 							<!-- Acciones que podemos realizar en el formulario -->
 						<button type="submit" class="btn btn-success btn-lg" ng-click="sumaTiempo()" ng-disabled="myForm.$invalid || selected">Sumar</button>
 				</form>
+				<table>
+				    <thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Create</th>
+							<th>heald</th>
+							<th>fix</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td width="50" height="10"><b>#</b></td>
+							<td width="50" height="10">create #</td>
+							<td width="50" height="10">fix #</td>
+							<td width="50" height="10">heald #</td>
+						</tr>
+						<tr>
+							<td width="50" height="10"><b># min</b></td>
+							<td width="50" height="10">promedio #</td>
+							<td width="50" height="10">promedio #</td>
+							<td width="50" height="10">promedio #</td>
+						</tr>
+					</tbody>
+				</table>
+				<table WIDTH="40%">
+				    <thead>
+						<tr>
+							<th>Tckt Crdo</th>
+							<th>Fech Act</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="ticket in tickets | filter:hoy" style="background-color:{{$even?'white':'white'}}">
+							<td width="50" height="10">{{ticket.creado}}</td>
+							<td width="50" height="10">{{hoy}}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 

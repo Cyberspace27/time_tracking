@@ -19,7 +19,10 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
         var  hoy;
         var contadorDiaActual = 0;
         $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
+        // crear un array para los encabezados de la tabla reportes del dia
+		//var encabezadoReporteDia = {{}} ;
         
+
 
         
 
@@ -52,6 +55,7 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 			$scope.contadorDiaActual++;
 
 	};
+
 
 		//Crear un nuevo metodo usando el modulo $interval para actualizar la fecha actual cada 3 segundos
 		$interval(
