@@ -20,10 +20,14 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
         var contadorDiaActual = 0;
         $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
         // crear un array para los encabezados de la tabla reportes del dia
+        $scope.diaActual = new Date();
 		//var encabezadoReporteDia = {{}} ;
         
 
-
+	//Crear metodo para ordenar lo tiquetes
+	 $scope.ordenarPor = function(orden){
+	 	$scope.ordenSeleccionado = orden;
+	 };	
         
 
 	//Crear un uevo metodo controller para crear nuevos tickets

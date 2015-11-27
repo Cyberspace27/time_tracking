@@ -9,10 +9,10 @@
 				<table  class="table table-striped table-condensed" WIDTH="60%" >
 					<thead>
 					<tr>
-						<th>#</th>
+						<th><a href="" ng-click="ordenarPor('#')">#</a></th>
 						<th>ID Ticket</th>
 						<th>Time</th>
-						<th>Type</th>
+						<th><a href="" ng-click="ordenarPor('Type')">Type</a></th>
 						<th>Send To</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -47,7 +47,7 @@
 					    	<td>&nbsp;</td>
 
 				    	</tr>
-						<tr ng-repeat="ticket in tickets" style="background-color:{{$even?'white':'white'}}">
+						<tr ng-repeat="ticket in tickets | filter:diaActual"  style="background-color:{{$even?'white':'white'}}"  ng-init="sumatime=0;">
 							<td width="50" height="10">{{$index+1}}</td>
 							<td width="50" height="10"><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}">{{ticket.ticketId}}</a></td>
 							<td width="50" height="10" ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
@@ -88,15 +88,15 @@
 					<tbody>
 						<tr>
 							<td width="50" height="10"><b>#</b></td>
-							<td width="50" height="10">create #</td>
-							<td width="50" height="10">fix #</td>
-							<td width="50" height="10">heald #</td>
+							<td width="50" height="10">Cant #</td>
+							<td width="50" height="10">Cant #</td>
+							<td width="50" height="10">Cant #</td>
 						</tr>
 						<tr>
 							<td width="50" height="10"><b># min</b></td>
-							<td width="50" height="10">promedio #</td>
-							<td width="50" height="10">promedio #</td>
-							<td width="50" height="10">promedio #</td>
+							<td width="50" height="10">promed %</td>
+							<td width="50" height="10">promed %</td>
+							<td width="50" height="10" data-ng-mode="diaActual" id="diaActual">{{diaActual}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -105,12 +105,14 @@
 						<tr>
 							<th>Tckt Crdo</th>
 							<th>Fech Act</th>
+							<th>Fech Fix</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="ticket in tickets | filter:hoy" style="background-color:{{$even?'white':'white'}}">
-							<td width="50" height="10">{{ticket.creado}}</td>
-							<td width="50" height="10">{{hoy}}</td>
+							<td width="50" height="10">Posted by @{{ticket.creado}}===</td>
+							<td width="50" height="10">== {{hoy}} == </td>
+							<td width="50" height="10"><small class="pull-right">{{ticket.creado|date:"h:mma 'on' MMM d, y"}}</small></td>
 						</tr>
 					</tbody>
 				</table>
