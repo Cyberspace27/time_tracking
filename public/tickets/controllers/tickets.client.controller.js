@@ -2,7 +2,37 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').controller('TicketsController', ['$scope', '$filter', '$routeParams', '$interval', '$location', 'Authentication', 'Tickets',
+angular.module('tickets').filter('filtroDate', function($filter) 
+  {
+       return function(input)
+     {
+     	//Se creauna variable 'diaActual' y se inicicializa con el valor de la fecha actual en una zona horaria adecuada 
+        var diaActual = $filter('date')(new Date(), 'yyyy-MM-dd');
+  
+        var salida = [];
+
+        //se inicia el siglo para recorrer el array de tiquetes 
+        for( var i=0; i<input.length; i++) {
+        	//se crea una variable 'dataArray' y se le carga el valor del objeto 'tiquete' con sus datos individuales
+          	var dataArray = input[i];
+          	//se crear una variable 'creado' y se le inicializa con el valor de la fecha en la que el tiquete se creo
+        	var creado = dataArray.creado;	
+        	//Se crea una vaiable 'diaTickete' y se inicializa con la fecha del tiquete con un formato de zona horaria adecuado
+        	var diaTickete = $filter('date')(new Date(creado), 'yyyy-MM-dd');	
+
+        	//console.log("ID Tickete : ", dataArray.ticketId);
+            //Se crea una condicion para validar si el ticket es del dia actual
+        	if (diaActual == diaTickete ) {   
+        		//si el ticket es del dia actual lo agrega  
+        	        salida.push(dataArray);
+              }
+
+         }
+
+          return salida;
+        }
+    })
+.controller('TicketsController', ['$scope', '$filter', '$routeParams', '$interval', '$location', 'Authentication', 'Tickets',
 	function($scope, $filter , $routeParams, $interval, $location, Authentication, Tickets){
       	
 		//Exponer el service Authencation
@@ -19,6 +49,9 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
         var  hoy;
         var contadorDiaActual = 0;
         $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
+        $scope.sumatime = 0;
+        ///nuevo filtro
+        //$scope.filtroFecha = $filter('filter')($scope.tickets,{{creado:hoy}});
         // crear un array para los encabezados de la tabla reportes del dia
         $scope.diaActual = new Date();
 		//var encabezadoReporteDia = {{}} ;
@@ -28,7 +61,9 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 	 $scope.ordenarPor = function(orden){
 	 	$scope.ordenSeleccionado = orden;
 	 };	
-        
+
+
+
 
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
@@ -158,8 +193,5 @@ angular.module('tickets').controller('TicketsController', ['$scope', '$filter', 
 		//We init the app
 		init();
 
-	}
 
-	]);
-
-
+    }]);

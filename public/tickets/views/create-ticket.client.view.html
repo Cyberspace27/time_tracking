@@ -47,7 +47,7 @@
 					    	<td>&nbsp;</td>
 
 				    	</tr>
-						<tr ng-repeat="ticket in tickets | filter:diaActual"  style="background-color:{{$even?'white':'white'}}"  ng-init="sumatime=0;">
+						<tr ng-repeat="ticket in tickets | filtroDate "  style="background-color:{{$even?'white':'white'}}"  ng-init="sumatime=0;">
 							<td width="50" height="10">{{$index+1}}</td>
 							<td width="50" height="10"><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}">{{ticket.ticketId}}</a></td>
 							<td width="50" height="10" ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
@@ -70,7 +70,7 @@
 				<form name="myForm">
 						<div class="form-group">
 							<label>Tiempo Registrado</label>
-								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatotal=sumatiempo||sumatime}}
+								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatime}}
 								<br>
 						</div>
 							<!-- Acciones que podemos realizar en el formulario -->
@@ -109,9 +109,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="ticket in tickets | filter:hoy" style="background-color:{{$even?'white':'white'}}">
-							<td width="50" height="10">Posted by @{{ticket.creado}}===</td>
-							<td width="50" height="10">== {{hoy}} == </td>
+						<tr ng-repeat="ticket in tickets | filtroDate " style="background-color:{{$even?'white':'white'}}">
+							<td width="50" height="10">Posted by @{{ticket.creado| date:'yyyy-MM-dd h:mma'}}===</td>
+							<td width="50" height="10">== HOY {{hoy}} Hasta aqui== </td>
 							<td width="50" height="10"><small class="pull-right">{{ticket.creado|date:"h:mma 'on' MMM d, y"}}</small></td>
 						</tr>
 					</tbody>
