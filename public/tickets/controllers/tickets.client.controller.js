@@ -67,6 +67,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
 
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
+			$scope.sumatime = 0 ;
 			//Usar los campos para crear nuevos tickets
 			var ticket = new Tickets({
 				ticketId: this.ticketId,
