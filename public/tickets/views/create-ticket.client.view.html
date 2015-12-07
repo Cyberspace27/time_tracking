@@ -73,8 +73,7 @@
 								<input type="text" class="form-control input-lg text-center" data-ng-model="sumatiempo"  >{{sumatime}}
 								<br>
 						</div>
-							<!-- Acciones que podemos realizar en el formulario -->
-						<button type="submit" class="btn btn-success btn-lg" ng-click="sumaTiempo()" ng-disabled="myForm.$invalid || selected">Sumar</button>
+						
 				</form>
 				<table>
 				    <thead>
@@ -97,22 +96,6 @@
 							<td width="50" height="10">promed %</td>
 							<td width="50" height="10">promed %</td>
 							<td width="50" height="10" data-ng-mode="diaActual" id="diaActual">{{diaActual}}</td>
-						</tr>
-					</tbody>
-				</table>
-				<table WIDTH="40%">
-				    <thead>
-						<tr>
-							<th>Tckt Crdo</th>
-							<th>Fech Act</th>
-							<th>Fech Fix</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="ticket in tickets | filtroDate " style="background-color:{{$even?'white':'white'}}">
-							<td width="50" height="10">Posted by @{{ticket.creado| date:'yyyy-MM-dd h:mma'}}===</td>
-							<td width="50" height="10">== HOY {{hoy}} Hasta aqui== </td>
-							<td width="50" height="10"><small class="pull-right">{{ticket.creado|date:"h:mma 'on' MMM d, y"}}</small></td>
 						</tr>
 					</tbody>
 				</table>
