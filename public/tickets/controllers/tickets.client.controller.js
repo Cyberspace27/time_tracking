@@ -39,28 +39,69 @@ angular.module('tickets').filter('filtroDate', function($filter)
 		
 		$scope.authentication = Authentication;
 
-        //Se iniciaiza las Variables 'tiempo, tipo y dia'
-        var tiempo;
+        //Se creauna variable 'diaActual' y se inicicializa con el valor de la fecha actual en una zona horaria adecuada 
+        var diaActualReporte = $filter('date')(new Date(), 'yyyy-MM-dd');
 
         $scope.tipo = "Tipo";
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
-        var sumatiempo ;
-        var  hoy;
-        var contadorDiaActual = 0;
-        $scope.hoy = $filter('date')(new Date(), 'yyyy-MM-dd');
+      
+        
         $scope.sumatime = 0;
-        ///nuevo filtro
-        //$scope.filtroFecha = $filter('filter')($scope.tickets,{{creado:hoy}});
-        // crear un array para los encabezados de la tabla reportes del dia
-        $scope.diaActual = new Date();
-		//var encabezadoReporteDia = {{}} ;
+        
         
 
-	//Crear metodo para ordenar lo tiquetes
+     ////Crear un uevo metodo controller para sumar los tipos de tiquetes
+		$scope.sumaType = function(){
+			 //Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar cuenta de los tiquetes
+				$scope.fixed=0;
+				$scope.heald=0;
+				$scope.create=0;
+				$scope.totalTicket= 0;
+
+			//Siglo agular for para accesar a cada uno de los valores de array tickets	
+		      	for( var i=0; i<$scope.tickets.length; i++) {
+				
+		      	//var creado = $filter('date')(new Date($scope.ticket.creado), 'yyyy-MM-dd');
+		      	//se suma el dato 'tiempo' de cada tiket dentro del array tickets
+		      	
+		      	if(diaActualReporte == diaActualReporte){
+		      		//if (eachtime.tipo == "create") {
+		      	//	create= create+1;
+		          //   console.log(" create", create);	
+		      	//	};
+		     switch($scope.tipo)
+	   		{
+ 
+			case "create":
+			  	$scope.create= $scope.create+1;
+			  	console.log(" create", $scope.create);	
+			 // break;
+			case "heald":
+				$scope.heald= $scope.heald+1;
+			  	console.log(" heald", $scope.heald);	
+			//  break;
+			case "fix":
+				$scope.fixed= $scope.fixed+1;
+			  	console.log("fixed : ",$scope.fixed );	
+			//  break;
+		  
+		}
+		             
+		      	   };
+		        
+		      };
+		      //Se le suma el nuevo dato y se carga a el $scope.sumatiempo
+		      //$scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
+		};
+
+
+	//Crear metodo para ordenar lo tiquetes INCOMPLETO
 	 $scope.ordenarPor = function(orden){
 	 	$scope.ordenSeleccionado = orden;
 	 };	
+
+
 
 
 
@@ -91,7 +132,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
 				$scope.error = errorResponse.data.message;
 			});
 			//se llama al metodo 'sumaTiempo' del dia	actual		
-			$scope.sumaTiempo();
+			$scope.sumaType();
 			$scope.contadorDiaActual++;
 
 	};
@@ -106,19 +147,6 @@ angular.module('tickets').filter('filtroDate', function($filter)
 					},
 					( 3 * 1000 )
 				);
-		//Crear un uevo metodo controller para sumar e tiempo
-		$scope.sumaTiempo = function(){
-			 //Iniciar la variable 'sumatiempo' con valor de 0  
-				sumatiempo=0;
-			//Siglo agular for each para accesar a cada uno de los valores de array tickets	
-		      angular.forEach($scope.tickets, function(eachtime){
-		      	//se suma el dato 'tiempo' de cada tiket dentro del array tickets
-		        sumatiempo=eachtime.tiempo+sumatiempo;
-		      });
-		      //Se le suma el nuevo dato y se carga a el $scope.sumatiempo
-		      $scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
-		};
-
 
 		//Crear un nuevo metodo controller para recuperar una lista de tickets
 		$scope.find = function(){
@@ -178,7 +206,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
 			//$scope.tickets = Tickets.query();
 		 //Iniciar la variable 'sumatiempo' con valor de 0 
 
-			sumatiempo=0;
+			var sumatiempo=0;
 		//Siglo agular for each para accesar a cada uno de los valores de array tickets 
 			angular.forEach($scope.tickets, function(eachtime){
 			//se suma el dato 'tiempo' de cada tiket dentro del array tickets
