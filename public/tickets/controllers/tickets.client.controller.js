@@ -51,48 +51,66 @@ angular.module('tickets').filter('filtroDate', function($filter)
         
         
 
-     ////Crear un uevo metodo controller para sumar los tipos de tiquetes
+     ////Crear un uevo metodo controller para sumar los tipos de tiquetes metodo en DESARROLLO
 		$scope.sumaType = function(){
 			 //Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar cuenta de los tiquetes
-				$scope.fixed=0;
-				$scope.heald=0;
-				$scope.create=0;
-				$scope.totalTicket= 0;
-
-			//Siglo agular for para accesar a cada uno de los valores de array tickets	
-		      	for( var i=0; i<$scope.tickets.length; i++) {
+				$scope.fixedCant=0;
+				$scope.healdCant=0;
+				$scope.createCant=0;
+				$scope.totalTicketCant= 0;
 				
-		      	//var creado = $filter('date')(new Date($scope.ticket.creado), 'yyyy-MM-dd');
-		      	//se suma el dato 'tiempo' de cada tiket dentro del array tickets
-		      	
-		      	if(diaActualReporte == diaActualReporte){
-		      		//if (eachtime.tipo == "create") {
-		      	//	create= create+1;
-		          //   console.log(" create", create);	
-		      	//	};
-		     switch($scope.tipo)
+			//Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar los promedios de los tiquetes	
+				$scope.fixedProm=0;
+				$scope.healdProm=0;
+				$scope.createProm=0;
+				$scope.totalTicketProm= 0;
+
+
+		 angular.forEach($scope.tickets,function(value){
+				 $scope.creadoDia = value.creado;
+				 $scope.creadoDia = $filter('date')(new Date($scope.creadoDia), 'yyyy-MM-dd');	
+				 	//console.log(" Fecha del tiquete a comparar : ", $scope.creadoDia);	
+              
+              if($scope.creadoDia == diaActualReporte){
+              	$scope.totalTicket +=1;
+              //	console.log(" Variable totalTicket : ", $scope.totalTicket);	
+                 switch(value.tipo)
 	   		{
  
 			case "create":
-			  	$scope.create= $scope.create+1;
-			  	console.log(" create", $scope.create);	
-			 // break;
+			  	$scope.createCant = $scope.createCant+1;
+			  	$scope.createProm += value.tiempo;
+
+			  	//console.log(" create", $scope.create);	
+			  break;
 			case "heald":
-				$scope.heald= $scope.heald+1;
-			  	console.log(" heald", $scope.heald);	
-			//  break;
+				$scope.healdCant= $scope.healdCant+1;
+			  $scope.healdProm += value.tiempo;	
+			 break;
 			case "fix":
-				$scope.fixed= $scope.fixed+1;
-			  	console.log("fixed : ",$scope.fixed );	
-			//  break;
+				$scope.fixedCant= $scope.fixedCant+1;
+				$scope.fixedProm += value.tiempo;	
+			 break;
 		  
+			}
+
 		}
-		             
-		      	   };
-		        
-		      };
-		      //Se le suma el nuevo dato y se carga a el $scope.sumatiempo
-		      //$scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
+
+
+            });
+		 	//se crea los porcentajes en base a la suma de cada tipo de tiquete
+		   $scope.createProm = $scope.createProm / $scope.createCant;
+			//console.log("createProm : ",$scope.createProm );
+
+			$scope.healdProm = $scope.healdProm / $scope.healdCant;
+			//console.log("healdProm : ",$scope.healdProm );
+
+			$scope.fixedProm = $scope.fixedProm / $scope.fixedCant;
+			//var creado = $scope.tickets.creado =  pais.diaAnt.replace(/^\"(.*)\"/,"$1");
+
+			//$scope.fixedProm = $scope.fixedProm.replace(/^\s*(\d+\s*\.\d{2})/,"$1");
+			console.log("fixedProm : ",$scope.fixedProm );
+
 		};
 
 
