@@ -48,7 +48,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
       
         
         $scope.sumatime = 0;
-        
+       $scope.numTickDia = 0;
         
 
      ////Crear un uevo metodo controller para sumar los tipos de tiquetes metodo en DESARROLLO
