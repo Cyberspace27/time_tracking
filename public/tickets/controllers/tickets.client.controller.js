@@ -46,9 +46,10 @@ angular.module('tickets').filter('filtroDate', function($filter)
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
       
-        
-        $scope.sumatime = 0;
-       $scope.numTickDia = 0;
+        console.log("Suma numTickDia",$scope.numTickDia)
+       // $scope.numTickDia = 0;
+       // $scope.sumatime = 0;
+       //$scope.numTickDia = 0;
         
 
      ////Crear un uevo metodo controller para sumar los tipos de tiquetes metodo en DESARROLLO
@@ -106,11 +107,9 @@ angular.module('tickets').filter('filtroDate', function($filter)
 			//console.log("healdProm : ",$scope.healdProm );
 
 			$scope.fixedProm = $scope.fixedProm / $scope.fixedCant;
-			//var creado = $scope.tickets.creado =  pais.diaAnt.replace(/^\"(.*)\"/,"$1");
-
-			//$scope.fixedProm = $scope.fixedProm.replace(/^\s*(\d+\s*\.\d{2})/,"$1");
-			console.log("fixedProm : ",$scope.fixedProm );
-
+				console.log("sumatime : ", $scope.sumatime, " + numTickDia : ",$scope.numTickDia );
+			$scope.totalTicketProm = $scope.sumatime / $scope.numTickDia ;
+ 
 		};
 
 
@@ -126,7 +125,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
 
 	//Crear un uevo metodo controller para crear nuevos tickets
 		$scope.create = function(){
-			$scope.sumatime = 0 ;
+			
 			//Usar los campos para crear nuevos tickets
 			var ticket = new Tickets({
 				ticketId: this.ticketId,
@@ -149,9 +148,12 @@ angular.module('tickets').filter('filtroDate', function($filter)
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;
 			});
-			//se llama al metodo 'sumaTiempo' del dia	actual		
+			//se llama al metodo 'sumaType' del dia	actual		
 			$scope.sumaType();
-			$scope.contadorDiaActual++;
+			//se inicializa la variable sumatime y nunTickDia para cuando se ingrese un nuevo tiquete se inicie la suma en 0
+			$scope.sumatime = 0 ;
+			$scope.numTickDia = 0 ;
+			
 
 	};
 
