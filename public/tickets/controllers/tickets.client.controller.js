@@ -2,7 +2,22 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets').filter('filtroDate', function($filter) 
+angular.module('tickets')
+.directive('onFinishRender', function () {
+    return {
+        restrict: 'A',        
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                console.log(element)
+                element.ready(function () {                    
+                    scope.sumaType();
+                });
+            }
+        }
+    }
+})
+
+.filter('filtroDate', function($filter) 
   {
        return function(input)
      {
@@ -149,7 +164,7 @@ angular.module('tickets').filter('filtroDate', function($filter)
 				$scope.error = errorResponse.data.message;
 			});
 			//se llama al metodo 'sumaType' del dia	actual		
-			$scope.sumaType();
+			//$scope.sumaType();
 			//se inicializa la variable sumatime y nunTickDia para cuando se ingrese un nuevo tiquete se inicie la suma en 0
 			$scope.sumatime = 0 ;
 			$scope.numTickDia = 0 ;

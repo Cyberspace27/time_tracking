@@ -46,7 +46,7 @@
 					    	<td>&nbsp;</td>
 
 				    	</tr>
-						<tr ng-repeat="ticket in tickets | filtroDate "  style="background-color:{{$even?'white':'white'}}"  >
+						<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaType()"  style="background-color:{{$even?'white':'white'}}"  >
 							<td width="50" height="10" ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 							<td width="50" height="10"><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}">{{ticket.ticketId}}</a></td>
 							<td width="50" height="10" ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
