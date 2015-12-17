@@ -1,4 +1,42 @@
 <center><section ng-controller="ExampleController">
+<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				 data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				 	<span class="sr-only">Este boton despliega la barra de navegacion</span>
+				 	<span class="icon-bar"></span>
+				 	<span class="icon-bar"></span>
+				 	<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Cyberspace27</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse" >
+				<ul class="nav navbar-nav">
+					<li><a href="/#!/tickets/create">Crear Feeds</a></li>
+					<li><a href="/#!/tickets">Reportes</a></li>
+					<li><a href="#">Documentacion</a></li>
+				</ul>
+				<div data-ng-show="!authentication.user">
+				 <ul class="nav navbar-nav navbar-right">				 
+				 	<li><a href="/signin">Iniciar Sesion</a></li>
+				 	<li><a href="/signup">Registro</a></li>
+				 </ul>	
+				 </div>
+				 <div data-ng-show="authentication.user">
+				 <ul class="nav navbar-nav navbar-right">
+				 	<li><a href="/signout">Cerrar Sesion</a></li>
+				 	<li><a href="/signout">Info</a></li>
+				 </ul>
+				 </div>
+				 
+			</div>
+		</div>		
+	</nav>
+	<!--Imagen de logo-->
+		<br>
+		<center><img src="img/logo.jpg"/ alt="logo"></center>
+
 	<div data-ng-show="!authentication.user">
 		<a href="/signup">Crear Cuenta</a>
 		<a href="/signin">Identificarse</a>
@@ -6,9 +44,9 @@
 	<div data-ng-show="authentication.user">
 		<h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
 		<a href="/signout">Cerrar Sesion</a>
-		<ul>
-			<li type="circle"><a href="/#!/tickets/create">Crear Tickets</a></li>
-			<li type="square"><a href="/#!/tickets">      Reportes</a></li>
+		<ul style="list-style:none">
+			<li><a href="/#!/tickets/create">Crear Tickets</a></li>
+			<li><a href="/#!/tickets">      Reportes</a></li>
 		</ul>
 	</div>
 </section></center>
