@@ -1,6 +1,6 @@
 table#table1{
     font-family: "Trebuchet MS", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1.4em;
     font-style: normal;
@@ -9,7 +9,7 @@ table#table1{
 
 
 #table1 thead th{
-    padding:15px;
+    padding:10px;
     color:#fff;
     text-shadow:1px 1px 1px #568F23;
     border:1px solid #93CE37;
@@ -44,9 +44,9 @@ table#table1{
 
 #table1 tfoot td{
     color: #9CD009;
-    font-size:32px;
+    font-size:30px;
     text-align:center;
-    padding:10px 0px;
+    padding:14px 0px;
     text-shadow:1px 1px 1px #444;
 }
 #table1 tfoot th{
@@ -66,9 +66,5 @@ table#table1{
     text-shadow:1px 1px 1px #fff;
 }
 
-
-#table1 tbody span.check::before{
-    content : url(../images/check0.png)
-}
 
 
