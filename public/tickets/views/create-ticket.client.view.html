@@ -1,7 +1,7 @@
 <section data-ng-controller="TicketsController">
 
 
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top" id="nav">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -11,7 +11,7 @@
 				 	<span class="icon-bar"></span>
 				 	<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Cyberspace27</a>
+				<a class="navbar-brand" href="#!">Cyberspace27</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" >
 				<ul class="nav navbar-nav">
@@ -28,7 +28,7 @@
 				 <div data-ng-show="authentication.user">
 				 <ul class="nav navbar-nav navbar-right">
 				 	<li><a href="/signout">Cerrar Sesion</a></li>
-				 	<li><a href="/signout">Info</a></li>
+				 	<li><a href="/#">Ayuda</a></li>
 				 </ul>
 				 </div>
 				 
@@ -42,6 +42,10 @@
 					<h2>Registrar Feeds</h2>
 					
 		            <p>Dia en progreso : </p> <center><strong><h2 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando</h2></strong></center>
+		            <!-- Si no hay articulos en la lista, sugerimos al usuario que cree un nuevo articulo-->
+	               <div data-ng-hide="!tickets | filtroDate">
+		            	<!--<p>No hay tickets ingresados el dia de hoy</p>-->
+					</div>
 				</div>
 			    <div class="col-md-7">
 					 <div align="right"><img src="img/logo.jpg"/ alt="logo"></div>
@@ -54,12 +58,10 @@
 
 	<div class="container">
 
-		
-
 		<div class="row">
 
 			<div class="col-md-8">
-			    <form data-ng-submit="create()" data-ng-init="find()" novalidate> 
+			    <form data-ng-submit="create()" data-ng-init="find()" > 
 			       <table  class="table table-striped table-condensed" >
 						<thead>
 						<tr>
@@ -101,15 +103,17 @@
 						    	<td>&nbsp;</td>
 
 					    	</tr>
-							<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaType()"  style="background-color:{{$even?'white':'white'}}"  >
-								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
-								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
-								<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
-								<td>{{ticket.tipo}}</td>
-								<td>{{ticket.sendto}}</td>
-								<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
-								</td>
-							</tr>
+					    	<div data-ng-show="!authentication.user">
+								<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaType()"  style="background-color:{{$even?'white':'white'}}"  >
+									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
+									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
+									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
+									<td>{{ticket.tipo}}</td>
+									<td>{{ticket.sendto}}</td>
+									<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
+									</td>
+								</tr>
+							</div>
 						</tbody>
 					</table>
 					 

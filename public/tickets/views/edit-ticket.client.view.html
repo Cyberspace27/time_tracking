@@ -30,127 +30,145 @@
 				 <div data-ng-show="authentication.user">
 				 <ul class="nav navbar-nav navbar-right">
 				 	<li><a href="/signout">Cerrar Sesion</a></li>
-				 	<li><a href="/signout">Info</a></li>
+				 	<li><a href="#">Ayuda</a></li>
 				 </ul>
 				 </div>
 				 
 			</div>
 		</div>		
 		</nav>
-	<!--Imagen de logo-->
-		<br>
-		<center><img src="img/logo.jpg"/ alt="logo"></center>
-
-
-
-		<center><h1 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando</h1></center>
-
-		<!--El formulario nuevo articulo -->
-		
-		<div class="row">
-		   <div  class="col-md-9">
-				<form data-ng-submit="update()" data-ng-init="find()"> 
-					<table class="table table-striped table-condensed">
-						<thead>
-						<tr>
-							<th>#</th>
-							<th>ID Ticket</th>
-							<th>Time</th>
-							<th>Type</th>
-							<th>Send To</th>
-							<th>&nbsp;</th>
-						</tr>
-
-					   	</thead>
-						<tbody>
-					    	<tr>
-						    	<td><input type="text" data-ng-model="prueba" id="prueba" disabled="false" ></td>
-						    	<td><input type="text" data-ng-model="ticket.ticketId" id="ticketId" ></td> 
-						    	<td><input type="text" data-ng-model="ticket.tiempo" id="segundos" ></td>
-						    	<td>
-						    		<select name="tipo" data-ng-model="ticket.tipo" >
-									   <option value="Tipo">Tipo</option>
-										<option value="create">create</option>
-										<option value="fix">fix</option>
-										<option value="heald">Heald</option>
-								    </select>
-								 </td>
-								 <td>
-								  	<select name="sendto" data-ng-model="ticket.sendto" >
-									   <option value="Sendto">Sendto</option>
-									   <option value="Verificar">Verificar</option>
-										<option value="TechImpt">TechImp</option>
-										<option value="NonTect">NonTect</option>
-										<option value="AggOpps">AggOpps</option>
-								    </select>
-								  </td>
-								 <td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Editar"> </td>
-								 <td></td>
-								 <td>&nbsp;</td>
-
-							 </tr>
-							<tr ng-repeat="ticket in tickets | filtroDate" style="background-color:{{$even?'white':'white'}}">
-										<td width="50" height="30">{{$index+1}}</td>
-										<td width="50" height="30"><a href="https://www.google.com/?gws_rd=ssl">{{ticket.ticketId}}</a></td>
-										<td width="50" height="30">{{ticket.tiempo}}</td>
-										<td width="50" height="30">{{ticket.tipo}}</td>
-										<td width="50" height="30">{{ticket.sendto}}</td>
-										<td width="50" height="30"><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
-										</td>
-							</tr>
-						</tbody>
-					</table>
-					<!--El elemento mensaje error-->	
-					<div data-ng-show="error">
-						<strong data-ng-bind="error"></strong>
-				    </div>
-				</form>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-md-5">
+						<h2>Editar Ticket</h2>
+						
+			            <p>Dia en progreso : </p> <center><strong><h2 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando</h2></strong></center>
+			            <p>Id del Ticket : <strong> {{ticket.ticketId}} </strong></p>
+					</div>
+				    <div class="col-md-7">
+						 <div align="right"><img src="img/logo.jpg"/ alt="logo"></div>
+					</div>
+						
+				</div>
 			</div>
+	    </div>
+		<!--El formulario nuevo articulo -->
+		<div class="container">
 
-			<div class="col-md-3" id="pdf2htmldiv">
-			    <br>
-				<table  id="table1">
-				    <thead>
-						<tr>
-							<th scope="col" >&nbsp;</th>
-							<th scope="col" >Create</th>
-							<th scope="col" >heald</th>
-							<th scope="col" >fix</th>
-							<th scope="col" >Total</th>
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<th scope="row">Tiempo total</th>
-							<td></td>
-							<td></td>
-							<td>{{sumatime}}</td>
-							<td>min</td>
-						</tr>
+			<div class="row">
+		
+			   <div class="col-md-8">
+					<form data-ng-submit="update()" data-ng-init="find()"> 
+						<table class="table table-striped table-condensed">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>ID Ticket</th>
+								<th>Time</th>
+								<th>Type</th>
+								<th>Send To</th>
+								<th>&nbsp;</th>
+							</tr>
 
-	               </tfoot>
-					<tbody>
-						<tr>
-							<th width="50" height="10" scope="row"><b>Can #</b></td>
-							<td width="50" height="10">{{createCant||0}}</td>
-							<td width="50" height="10">{{healdCant||0}}</td>
-							<td width="50" height="10">{{fixedCant||0}}</td>
-							<td width="50" height="10">{{numTickDia||0}}</td>
-						</tr>
-						<tr> 
-							<th width="50" height="10" scope="row"><b>Min %</b></td>
-							<td width="50" height="10">{{createProm|number:2||0|currency:"%":0}} </td>
-							<td width="50" height="10">{{healdProm|number:2||0|currency:"%":0}}</td>
-							<td width="50" height="10">{{fixedProm|number:2||0|currency:"%":0}}</td>
-							<td width="50" height="10">{{totalTicketProm|number:2||0|currency:"%":0}}</td>
-						</tr>
-					</tbody>
-				</table>
-				<br/>
-				<div align="center"><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Crear Reporte</a></div>
+						   	</thead>
+							<tbody>
+						    	<tr>
+							    	<td><input type="text" data-ng-model="prueba" id="prueba" disabled="false" size="10"></td>
+							    	<td><input type="text" data-ng-model="ticket.ticketId" id="ticketId" size="10" ></td> 
+							    	<td><input type="text" data-ng-model="ticket.tiempo" id="segundos" size="10" ></td>
+							    	<td>
+							    		<select name="tipo" data-ng-model="ticket.tipo" >
+										   <option value="Tipo">Tipo</option>
+											<option value="create">create</option>
+											<option value="fix">fix</option>
+											<option value="heald">Heald</option>
+									    </select>
+									 </td>
+									 <td>
+									  	<select name="sendto" data-ng-model="ticket.sendto" >
+										   <option value="Sendto">Sendto</option>
+										   <option value="Verificar">Verificar</option>
+											<option value="TechImpt">TechImp</option>
+											<option value="NonTect">NonTect</option>
+											<option value="AggOpps">AggOpps</option>
+									    </select>
+									  </td>
+									 <td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Editar"> </td>
+									 <td></td>
+									 <td>&nbsp;</td>
+
+								 </tr>
+								<tr ng-repeat="ticket in tickets | filtroDate" style="background-color:{{$even?'white':'white'}}">
+											<td width="50" height="30">{{$index+1}}</td>
+											<td width="50" height="30"><a href="https://www.google.com/?gws_rd=ssl">{{ticket.ticketId}}</a></td>
+											<td width="50" height="30">{{ticket.tiempo}}</td>
+											<td width="50" height="30">{{ticket.tipo}}</td>
+											<td width="50" height="30">{{ticket.sendto}}</td>
+											<td width="50" height="30"><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action {{prueba}}</a>
+											</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--El elemento mensaje error-->	
+						<div data-ng-show="error">
+							<strong data-ng-bind="error"></strong>
+					    </div>
+					</form>
+				</div>
+
+			<div class="col-md-4" id="pdf2htmldiv">
+			<div class="row">
+		    		<div class="col-md-12">	
+		    		 	  	
+							<table id="table1">
+							    <thead>
+									<tr>
+										<th scope="col" >&nbsp;</th>
+										<th scope="col" >Create</th>
+										<th scope="col" >heald</th>
+										<th scope="col" >fix</th>
+										<th scope="col" >Total</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th scope="row">Tiempo Registrado</th>
+										<td></td>
+										<td></td>
+										<td>{{sumatime}}</td>
+										<td>min</td>
+									</tr>
+
+				               </tfoot>
+								<tbody>
+									<tr>
+										<th width="10" height="10" scope="row"><b>Can #</b></th>
+										<td width="10" height="10">{{createCant||0}}</td>
+										<td width="10" height="10">{{healdCant||0}}</td>
+										<td width="10" height="10">{{fixedCant||0}}</td>
+										<td width="10" height="10">{{numTickDia||0}}</td>
+									</tr>
+									<tr> 
+										<th width="10" height="10" scope="row"><b>Min %</b></th>
+										<td width="10" height="10">{{createProm|number:2||0|currency:"%":0}} </td>
+										<td width="10" height="10">{{healdProm|number:2||0|currency:"%":0}}</td>
+										<td width="10" height="10">{{fixedProm|number:2||0|currency:"%":0}}</td>
+										<td width="10" height="10">{{totalTicketProm|number:2||0|currency:"%":0}}</td>
+									</tr>
+								</tbody>
+							</table>
+						
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<br/>
+							<div align="center"><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a></div>
+						</div>
+					</div>
 			</div>
 
 		</div>
-		
+		</div>
 	</div>
 </section>
