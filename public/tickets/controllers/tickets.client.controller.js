@@ -62,10 +62,8 @@ angular.module('tickets')
         $scope.sendto = "Sendto";
       
         console.log("Suma numTickDia",$scope.numTickDia)
-       // $scope.numTickDia = 0;
-       // $scope.sumatime = 0;
-       //$scope.numTickDia = 0;
-        
+       
+        // FIN DE LA PRUEBA DE GRAFICOS D3 -------------------------------------------------------------------------------------
 
      ////Crear un uevo metodo controller para sumar los tipos de tiquetes metodo en DESARROLLO
 		$scope.sumaType = function(){
