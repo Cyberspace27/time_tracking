@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= title %></title>
 		<meta charset="utf-8"> 
+		<title><%= title %></title>
+		
 		<link rel="stylesheet" type="text/css" href="/lib/ng-grid/ng-grid.css">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -13,10 +14,7 @@
 		<!-- Para agregar el archivo al indexEJS-->
 		<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" />
 
-		<script src="lib/d3/d3.js"></script>
-      	<script src="lib/nvd3/nv.d3.js"></script> <!-- or use another assembly -->
-		<script src="lib/angular-nvd3/dist/angular-nvd3.js"></script>
-		<link rel="stylesheet" href="lib/nvd3/nv.d3.css">
+		<link rel="stylesheet" href="lib/nvd3/build/nv.d3.css">
 
 	</head>
 	<body>
@@ -49,7 +47,12 @@
 		<script type="text/javascript" src="/users/services/aunthentication.client.service.js"></script>
 		<script type="text/javascript" src="/application.js"></script>
 		<script type="text/javascript" src="/lib/ng-grid/ng-grid-2.0.14.min.js"></script>
-		<script type="text/javascript" src="/tickets/filters/filter.js"</script>
+
+  		<script src="lib/d3/d3.js"></script>
+		<script src="lib/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+		<script src="lib/angular-nvd3/dist/angular-nvd3.js"></script>
+
+		<script type="text/javascript" src="/tickets/filters/filter.js"></script><!-- archivo en el cual se deberia crear los filtros -->
 	</body>
 </html>
 	
