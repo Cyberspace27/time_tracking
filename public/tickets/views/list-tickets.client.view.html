@@ -1,5 +1,5 @@
 <!--La view create ticket-->
-<section data-ng-controller="TicketsController">
+<section data-ng-controller="TicketsController" data-ng-init="find()">
 
 <nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
@@ -34,7 +34,7 @@
 				 
 			</div>
 		</div>		
-	</nav>
+</nav>
 	<!-- inicio del jumbotron oh en cabezado de la pagina-->
 	<div class="container">
 		<div class="jumbotron">
@@ -54,20 +54,20 @@
 
 	<div class="container">
 
-		<!--prueba del grafico-->
-	 		<div class="row">
-			<div class="col-md-12">
-			<p> Todavia no funsion</p>
-				<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-			</div>
-			</div>
-
-
 		<div class="row">
 		 	<div class="col-md-8">
-				
-				<!--El formulario nuevo articulo -->
-				<form data-ng-submit="create()" data-ng-init="find()" novalidate> 
+		 		<input ng-init="showTabla=true" type="checkbox" ng-model="showTabla" ng-click="showGraficas=false"/>Mostrar Tabla &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" ng-model="showGraficas" ng-click="showTabla=false"/>Mostrar Estadisticas Graficas 
+		     	<br /><br />
+		     	<div  ng-hide="!showGraficas" id="graficasReporte">
+		     		<br /><br /><br /><br />
+		     		<h2 align="center">Todavia no funsiona</h2>
+					<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+				</div>
+
+
+				<div ng-show="showTabla" id="tablaReporte">
+					<!--<form data-ng-submit="create()" data-ng-init="find()" novalidate> -->
 			     	<div class="input-group input-group-lg">
 				       <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
 				       <span class="input-group-btn">
@@ -108,14 +108,18 @@
 						<strong data-ng-bind="error"></strong>
 					</div>
 
-				</form>
-			</div>
+				<!--</form>-->
+				</div>
+				
+				
+			</div><!--Fin del div de class="col-md-8"-->	
+
 
 			 <div class="col-md-4" id="pdf2htmldiv">
 
 		    	<div class="row">
 		    		<div class="col-md-12">	
-		    		 	  	
+		    		 	  	<br/><br/>
 							<table id="table1">
 							    <thead>
 									<tr>
@@ -167,10 +171,6 @@
 
 
 			</div>
-
-	 		
-
-			
 
 	 		</div>
 	 		
