@@ -15,7 +15,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/#!/tickets/create">Registrar Feeds</a></li>
 					<li><a href="/#!/tickets">Reportes</a></li>
-					<li><a href="#">Documentacion</a></li>
+					<li><a href="#">Info</a></li>
 				</ul>
 				<div data-ng-show="!authentication.user">
 				 <ul class="nav navbar-nav navbar-right">				 
@@ -26,7 +26,7 @@
 				 <div data-ng-show="authentication.user">
 				 <ul class="nav navbar-nav navbar-right">
 				 	<li><a href="/signout">Cerrar Sesion</a></li>
-				 	<li><a href="/signout">Info</a></li>
+				 	<li><a href="/#!/"><em data-ng-bind="authentication.user.fullName" class="glyphicon glyphicon-user"  aria-hidden="true"></em></a></li>
 				 </ul>
 				 </div>
 				 

@@ -2,7 +2,7 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets')
+angular.module('tickets', ['nvd3'])
 .directive('onFinishRender', function () {
     return {
         restrict: 'A',        
@@ -325,7 +325,7 @@ angular.module('tickets')
 			//Usar el metodo '$update' de ticket para enviar una peticion Put apropiada
 			$scope.ticket.$update(function() {
 				//si un ticket fue actualizado de modo correcto, redirijir el user a la pagina del ticket
-			$location.path('/tickets');
+			$location.path('/tickets/create');
 			}, function(errorResponse){
 				//En otro caso, presentar al usuario el mensaje de error
 				$scope.error = errorResponse.data.message;

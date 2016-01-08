@@ -17,7 +17,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/#!/tickets/create">Registrar Feeds</a></li>
 					<li><a href="/#!/tickets">Reportes</a></li>
-					<li><a href="#">Documentacion</a></li>
+					<li><a href="#">Info</a></li>
 				</ul>
 				<div data-ng-show="!authentication.user">
 				 <ul class="nav navbar-nav navbar-right">				 
@@ -28,7 +28,7 @@
 				 <div data-ng-show="authentication.user">
 				 <ul class="nav navbar-nav navbar-right">
 				 	<li><a href="/signout">Cerrar Sesion</a></li>
-				 	<li><a href="/signout">Info</a></li>
+				 	<li><a href="/#!/"><em data-ng-bind="authentication.user.fullName" class="glyphicon glyphicon-user"  aria-hidden="true"></em></a></li>
 				 </ul>
 				 </div>
 				 
@@ -40,7 +40,7 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-md-5">
-					<h2>Reportes de Feeds Creados</h2>
+					<h2>Reportes de Tickets</h2>
 					
 		            <p>Dia en progreso : </p> <center><strong><h2 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando</h2></strong></center>		       
 				</div>
@@ -57,11 +57,11 @@
 		<div class="row">
 		 	<div class="col-md-8">
 		 		<input ng-init="showTabla=true" type="checkbox" ng-model="showTabla" ng-click="showGraficas=false"/>Mostrar Tabla &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" ng-model="showGraficas" ng-click="showTabla=false"/>Mostrar Estadisticas Graficas 
+				<input type="checkbox" ng-model="showGraficas" ng-click="showTabla=false"/>Mostrar Estadisticas Graficas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" ng-model="showReportes"  value="bird" disabled />Especificar Criterio
 		     	<br /><br />
-		     	<div  ng-hide="!showGraficas" id="graficasReporte">
-		     		<br /><br /><br /><br />
-		     		<h2 align="center">Todavia no funsiona</h2>
+		     	<div  ng-hide="!showGraficas" id="graficasReporte">		   
+		     		<h2 align="center">Grafico de Prueba</h2>
 					<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
 				</div>
 
