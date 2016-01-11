@@ -13,7 +13,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" >
 				<ul class="nav navbar-nav">
-					<li><a href="/#!/tickets/create">Registrar Feeds</a></li>
+					<li><a href="/#!/tickets/create">Registrar Tickets</a></li>
 					<li><a href="/#!/tickets">Reportes</a></li>
 					<li><a href="#">Info</a></li>
 				</ul>
@@ -39,13 +39,13 @@
 				<div class="col-md-5">
 					<div data-ng-show="authentication.user">
 					<h2>Bienvenido <span data-ng-bind="authentication.user.fullName"></span></h2>
-					
-		            <p>Dia en progreso : </p>
+
+					<p>Dia en progreso :  <center><strong><h2 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'MMM dd, yyyy'">Mostrar Dia y fecha en el que se esta trabajando</h2></strong></center>	</p>
 		            </div>
 		            <div data-ng-show="!authentication.user">
 					<h2>Cyberspace27</h2>
 					
-		            <p>TimeTracking App</p>
+		            <p>TimeTracking App dedicada a Registrar y crear Reportes</p>
 				</div>
 				</div>
 				

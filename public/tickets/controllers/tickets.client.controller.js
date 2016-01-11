@@ -61,7 +61,6 @@ angular.module('tickets', ['nvd3'])
         $scope.dia = new Date();
         $scope.sendto = "Sendto";
       
-        console.log("Suma numTickDia",$scope.numTickDia)
        
         //INICIO DE LA PRUEBA´PARA LOS GRAFICOS
          $scope.options = {
@@ -106,7 +105,7 @@ angular.module('tickets', ['nvd3'])
             }
             
         };
-   console.log("Optiones", $scope.options);  
+
     $scope.data = [{values: [
         {"date": 15854, "open": 165.42, "high": 165.8, "low": 164.34, "close": 165.22, "volume": 160363400, "adjusted": 164.35},
         {"date": 15855, "open": 165.35, "high": 166.59, "low": 165.22, "close": 165.83, "volume": 107793800, "adjusted": 164.96},
