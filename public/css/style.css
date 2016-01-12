@@ -77,14 +77,14 @@ table#table1{
 }
 .panel-heading{
     background-color: deepskyblue !important;
-    color: #090c0f !important;
+    color: deepskyblue !important;
 }
 .panel-body{
     color: #2b2b2b !important;
 }
 
 .navbar {
-    background-color: deepskyblue !important;
+    background-color: #2b2b2b  !important;
 }
 
 .navbar-brand:link, .navbar-brand:visited{
@@ -98,7 +98,7 @@ color: white !important;
 
 #navbar li a:link, #navbar li a:visited{
 
-color: #2b2b2b !important;
+color: white !important;
 }
 #navbar li a:hover, #navbar li a:active{
 color: deepskyblue !important;
