@@ -1,6 +1,6 @@
 <!-- La view ticket -->
 <section data-ng-controller="TicketsController" data-ng-init="findOne()">
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top"  role="navigation" id="nav">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -14,7 +14,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse" >
 				<ul class="nav navbar-nav">
-					<li><a href="/#!/tickets/create">Registrar Feeds</a></li>
+					<li><a href="/#!/tickets/create">Registrar Tickets</a></li>
 					<li><a href="/#!/tickets">Reportes</a></li>
 					<li><a href="#">Documentacion</a></li>
 				</ul>
@@ -34,23 +34,75 @@
 			</div>
 		</div>		
 	</nav>
-	<!--Imagen de logo-->
-		<br>
-		<center><img src="img/logo.jpg"/ alt="logo"></center>
+	<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-md-5">
+						<h2>Info del Ticket</h2>
+						
+			            <p>Dia en progreso : </p> <center><strong><h2 data-ng-mode="dia" id="dia" data-ng-bind="dia  | date:'medium'">Mostrar Dia y fecha en el que se esta trabajando</h2></strong></center>
+			            <p>Id del Ticket : <strong> {{ticket.ticketId}} </strong></p>
+					</div>
+				    <div class="col-md-7">
+						 <div align="right"><img src="img/logo.jpg"/ alt="logo"></div>
+					</div>
+						
+				</div>
+			</div>
+	    </div>
+	<div class="container">
 
-	<center>
-		<h1 data-ng-bind="ticket.ticketId"></h1>
-		<!--Mostrar los botonoes de edicion para el creaddor del articulo  data-ng-show="authentication.user._id == ticket.creator._id"-->
-		<div >
-			<a href="/#!/tickets/{{ticket._id}}/edit">edit</a>
-			<a  data-ng-click="delete();">delete</a>
-		</div>
-		<small>
-			<em>Postear</em>
-			<em data-ng-bind="ticket.creado | date:'mediumDate'"></em>
-			<em>by</em>
-			<em data-ng-bind="tiket.creador.fullName"></em>
-		</small>
-		<p data-ng-bind="ticket.tipo"></p>
-	</center>
+			<div class="row">
+
+			<div class="col-md-4">
+	     		<div class="row">
+	     			<div class="col-md-12">
+	     				<div class="panel panel-default">
+	     					<div class="panel-heading">
+	     						<span class="glyphicon glyphicon-search" aria-hidden="true">Busqueda</span>
+	     					</div>
+	     					<div class="panel-body">
+	     						<div class="form-group">
+	     							<input type="search" class="form-control" placeholder="Buscar">
+	     						</div>
+	     						<button class="form-control">Buscar</button>
+	     					</div>
+	     					
+	     				</div>
+	     			</div>
+	     		</div>
+	     		
+	     	 </div>
+
+	     	   	<!--fin del div class 'col-md-4' -->
+     	<div class="col-md-8">
+     		<div class="panel panel-default">
+     			<div class="panel-heading">
+     				<span class="glyphicon glyphicon-time" aria-hidden="true">TimeTracking</span>
+     			</div>
+     			<div class="panel-body" align="center">
+     				
+     					<!--Mostrar los botonoes de edicion para el creaddor del articulo  data-ng-show="authentication.user._id == ticket.creator._id"-->
+     				<h1 data-ng-bind="ticket.ticketId"></h1>
+     				<div >
+						<a href="/#!/tickets/{{ticket._id}}/edit">edit</a>
+						<a  data-ng-click="delete();">delete</a>
+						<br/>
+						<small>
+							<em>Creado el</em>
+							<em data-ng-bind="ticket.creado | date:'mediumDate'"></em>
+							<em>by</em>
+							<em data-ng-bind="ticket.creador.fullName"></em>
+						</small>
+						<p>Tipo de ticket: <span data-ng-bind="ticket.tipo" ></span></p>
+					</div>
+	    		</div>     			
+     		</div>
+     				
+     	</div>
+     		
+     	</div>
+		
+	</div>
+		
 </section>

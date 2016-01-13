@@ -89,8 +89,7 @@
 
 				   	</thead>
 					<tbody>
-						<div data-ng-show="!authentication.user">
-							<tr ng-repeat="ticket in tickets"  on-finish-render="sumaType()"  style="background-color:{{$even?'white':'white'}}"  >
+							<tr ng-repeat="ticket in tickets | filter:searchText"  on-finish-render="sumaType()"  style="background-color:{{$even?'white':'white'}}"  >
 								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
 								<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
@@ -99,7 +98,6 @@
 								<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
 								</td>
 							</tr>
-						</div>
 					</tbody>
 				</table>
 				
