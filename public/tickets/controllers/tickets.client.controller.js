@@ -8,9 +8,12 @@ angular.module('tickets', ['nvd3'])
         restrict: 'A',        
         link: function (scope, element, attr) {
             if (scope.$last === true) {
-                console.log(element)
-                element.ready(function () {                    
-                    scope.sumaType();
+                //console.log(element)
+                element.ready(function () {    
+
+                    scope.sumaTypeDia();
+                    scope.sumaTypeTotal();
+
                 });
             }
         }
@@ -62,12 +65,70 @@ angular.module('tickets', ['nvd3'])
         $scope.sendto = "Sendto";
       
        
-        
+	//Crear un uevo metodo controller para sumar todos los tipos de tickets guardados       
 
-       
+		$scope.sumaTypeTotal = function(){
+			//Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar cuenta de los tiquetes
+				$scope.fixedCant=0;
+				$scope.healdCant=0;
+				$scope.createCant=0;
+				$scope.totalTicketCant= 0;
+				
+			//Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar los promedios de los tiquetes	
+				$scope.fixedProm=0;
+				$scope.healdProm=0;
+				$scope.createProm=0;
+				$scope.totalTicketProm= 0;
 
-     //Crear un uevo metodo controller para sumar los tipos de tiquetes metodo en DESARROLLO
-		$scope.sumaType = function(){
+
+		   angular.forEach($scope.tickets,function(value){
+				
+                 $scope.creadoDia = value.creado;
+				
+                 $scope.creadoDia = $filter('date')(new Date($scope.creadoDia), 'yyyy-MM-dd');	
+				
+              
+              
+              	$scope.totalTicket +=1;
+
+              
+                 switch(value.tipo)
+		   		{
+	 
+				case "create":
+				  	$scope.createCant = $scope.createCant+1;
+				  	$scope.createProm += value.tiempo;
+		
+				  break;
+				case "heald":
+					$scope.healdCant= $scope.healdCant+1;
+				  $scope.healdProm += value.tiempo;	
+				 break;
+				case "fix":
+					$scope.fixedCant= $scope.fixedCant+1;
+					$scope.fixedProm += value.tiempo;	
+				 break;
+			  
+				}
+
+		
+
+
+            });
+		 	//se crea los porcentajes en base ala suma de cada tipo de tiquete
+		   $scope.createProm = $scope.createProm / $scope.createCant;
+			
+			$scope.healdProm = $scope.healdProm / $scope.healdCant;
+			
+			$scope.fixedProm = $scope.fixedProm / $scope.fixedCant;
+			//	console.log("sumatime : ", $scope.sumatime, " + numTickDia : ",$scope.numTickDia );
+			$scope.totalTicketProm = $scope.sumatime / $scope.numTickDia ;
+ 
+		};
+		      
+
+     //Crear un uevo metodo controller para sumar los tipos de tickets por dia
+		$scope.sumaTypeDia = function(){
 			 //Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar cuenta de los tiquetes
 				$scope.fixedCant=0;
 				$scope.healdCant=0;
@@ -93,23 +154,23 @@ angular.module('tickets', ['nvd3'])
 
               
                  switch(value.tipo)
-	   		{
- 
-			case "create":
-			  	$scope.createCant = $scope.createCant+1;
-			  	$scope.createProm += value.tiempo;
-	
-			  break;
-			case "heald":
-				$scope.healdCant= $scope.healdCant+1;
-			  $scope.healdProm += value.tiempo;	
-			 break;
-			case "fix":
-				$scope.fixedCant= $scope.fixedCant+1;
-				$scope.fixedProm += value.tiempo;	
-			 break;
-		  
-			}
+		   		{
+	 
+				case "create":
+				  	$scope.createCant = $scope.createCant+1;
+				  	$scope.createProm += value.tiempo;
+		
+				  break;
+				case "heald":
+					$scope.healdCant= $scope.healdCant+1;
+				  $scope.healdProm += value.tiempo;	
+				 break;
+				case "fix":
+					$scope.fixedCant= $scope.fixedCant+1;
+					$scope.fixedProm += value.tiempo;	
+				 break;
+			  
+				}
 
 		}
 
@@ -237,9 +298,7 @@ angular.module('tickets', ['nvd3'])
 			});
 		//Se le suma el nuevo dato y se carga a el $scope.sumatiempo
 			$scope.sumatiempo = sumatiempo + parseInt($scope.tiempo);
-			console.log("No paso nada "+$scope.sumatiempo);
-
-			console.log("No paso nada "+ $scope.tickets);
+		
 		}
 		//We init the app
 		init();
