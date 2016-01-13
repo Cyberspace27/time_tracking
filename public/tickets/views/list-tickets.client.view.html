@@ -21,7 +21,7 @@
 				</ul>
 				<div data-ng-show="!authentication.user">
 				 <ul class="nav navbar-nav navbar-right">				 
-				 	<li><a href="/signin">Iniciar Sesion</a></li>
+				 	<li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Iniciar Sesion</a></li>
 				 	<li><a href="/signup">Registro</a></li>
 				 </ul>	
 				 </div>
@@ -89,7 +89,7 @@
 
 				   	</thead>
 					<tbody>
-							<tr ng-repeat="ticket in tickets | filter:searchText"  on-finish-render="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
+							<tr ng-repeat="ticket in tickets | filter:searchText"  on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
 								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
 								<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>

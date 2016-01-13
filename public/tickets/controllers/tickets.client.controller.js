@@ -12,6 +12,19 @@ angular.module('tickets', ['nvd3'])
                 element.ready(function () {    
 
                     scope.sumaTypeDia();
+
+                });
+            }
+        }
+    }
+})
+.directive('onFinishRenderTot', function () {
+    return {
+        restrict: 'A',        
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                
+                element.ready(function () {    
                     scope.sumaTypeTotal();
 
                 });
@@ -328,9 +341,10 @@ angular.module('tickets', ['nvd3'])
                 },
 
                 yAxis: {
-                    axisLabel: 'Stock Price',
+                    axisLabel: 'Grafico de Tickets',
                     tickFormat: function(d){
-                        return '$' + d3.format(',.1f')(d);
+                      //  return '$' + d3.format(',.1f')(d); --- codigo original
+                        return d3.format(',.1f')(d);
                     },
                     showMaxMin: false
                 },
