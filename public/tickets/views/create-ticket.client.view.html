@@ -35,7 +35,7 @@
 			</div>
 		</div>		
 	</nav>
-	<div class="container">
+	<div class="container" >
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-md-5">
@@ -59,10 +59,51 @@
 
 	<div class="container">
 
-		<div class="row">
+		<div class="row" id="pdf2htmldiv" >
 
 			<div class="col-md-8">
 			    <form data-ng-submit="create()" data-ng-init="find()" > 
+			     <div class="row" id="bypassme">
+			     <div  class="col-md-12"> 
+
+			     <table class="table table-striped table-condensed">
+			     	 <tr >
+						<td><input type="text" disabled="true" placeholder=" # {{numTickDia+1}}" size="10">
+						 </td>
+						 <td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" size="10"></td>
+						<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo" size="10"></td>
+						<td>
+							<select name="tipo" data-ng-model="tipo">
+								<option value="Tipo">Tipo</option>
+								<option value="create">create</option>
+								<option value="fix">fix</option>
+								<option value="heald">Heald</option>
+							</select>
+						</td>
+								
+						<td>
+							<select name="sendto" data-ng-model="sendto" >
+								<option value="Sendto">Sendto</option>
+								<option value="Verificar">Verificar</option>
+								<option value="TechImpt">TechImp</option>
+								<option value="NonTect">NonTect</option>
+								<option value="AggOpps">AggOpps</option>
+							 </select>
+						</td>
+
+						<td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"></td>
+						<td></td>
+					   	<td>&nbsp;</td>
+					 </tr>
+			     </table>
+
+			     </div>
+			     </div>
+
+			     <div class="row">
+
+			     <div  class="col-md-12"> 
+			     		
 			       <table  class="table table-striped table-condensed" >
 						<thead>
 						<tr>
@@ -70,70 +111,42 @@
 							<th>ID Ticket</th>
 							<th>Time</th>
 							<th>Type</th>
-							<th>Send To</th>
+							<th id="bypassme">Send To</th>
 							<th>&nbsp;</th>
 						</tr>
 
 					   	</thead>
 						<tbody>
-					    	<tr >
-						    	<td><input type="text" disabled="true" placeholder=" # {{numTickDia+1}}" size="10">
-						    	
-						    	</td>
-						    	<td><input type="text" data-ng-model="ticketId"  id="ticketId" placeholder="ticketId" size="10"></td>
-						    	<td><input type="text" data-ng-model="tiempo" id="segundos" placeholder="tiempo" size="10"></td>
-						    	<td>
-						    		<select name="tipo" data-ng-model="tipo">
-									   <option value="Tipo">Tipo</option>
-										<option value="create">create</option>
-										<option value="fix">fix</option>
-										<option value="heald">Heald</option>
-								    </select>
-								 </td>
-								  <td>
-								  	<select name="sendto" data-ng-model="sendto" >
-									   <option value="Sendto">Sendto</option>
-									   <option value="Verificar">Verificar</option>
-										<option value="TechImpt">TechImp</option>
-										<option value="NonTect">NonTect</option>
-										<option value="AggOpps">AggOpps</option>
-								    </select>
-								  </td>
-								  <td><input class="btn btn-primary" data-ng-click="addContact()"type="submit" value="Ingresar"> </td>
-						    	<td></td>
-						    	<td>&nbsp;</td>
-
-					    	</tr>
-					    	
-								<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaTypeDia()"  style="background-color:{{$even?'white':'white'}}"  >
+					   		<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaTypeDia()"  style="background-color:{{$even?'white':'white'}}"  >
 									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
 									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
 									<td>{{ticket.tipo}}</td>
-									<td>{{ticket.sendto}}</td>
+									<td >{{ticket.sendto}}</td>
 									<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
 									</td>
-								</tr>
-							
+							</tr>
 						</tbody>
 					</table>
-					 
+					 </div>
+					 </div>
 					<!--El elemento mensaje error-->	
 						<div data-ng-show="error">
 							<strong data-ng-bind="error"></strong>
 						</div>
-
+					
 				</form>
 			</div>
 
 
-		    <div class="col-md-4" id="pdf2htmldiv">
+		    <div class="col-md-4" >
 
-		    	<div class="row">
+		    	<div class="row" >
 		    		<div class="col-md-12">	
 		    		 	  	
-							<table id="table1">
+							<table id="table1" >
 							    <thead>
+							     
 									<tr>
 										<th scope="col" >&nbsp;</th>
 										<th scope="col" >Create</th>
@@ -141,10 +154,11 @@
 										<th scope="col" >fix</th>
 										<th scope="col" >Total</th>
 									</tr>
+
 								</thead>
 								<tfoot>
 									<tr>
-										<th scope="row">Tiempo Registrado</th>
+										<th scope="row" >Tiempo Registrado</th>
 										<td></td>
 										<td></td>
 										<td>{{sumatime}}</td>
@@ -169,13 +183,14 @@
 									</tr>
 								</tbody>
 							</table>
+
 						
 					</div>
 
-					<div class="row">
+					<div class="row" id="ocultarBtn">
 						<div class="col-md-12">
 							<br/>
-							<div align="center"><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a></div>
+							<div align="center" ><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a></div>
 						</div>
 					</div>
 				</div>

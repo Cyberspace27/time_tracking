@@ -63,21 +63,20 @@ angular.module('tickets', ['nvd3'])
           return salida;
         }
     })
+//-----PASAR LOS FILTROS Y DIRECTIVAS PARA UN ARCHIVO APARTE Y INICIAR EL CONTROLADOR DESDE AQUI--------------------------
 .controller('TicketsController', ['$scope', '$filter', '$routeParams', '$interval', '$location', 'Authentication', 'Tickets',
 	function($scope, $filter , $routeParams, $interval, $location, Authentication, Tickets){
       	
 		//Exponer el service Authencation
-		
 		$scope.authentication = Authentication;
 
         //Se creauna variable 'diaActual' y se inicicializa con el valor de la fecha actual en un formato adecuado 
         var diaActualReporte = $filter('date')(new Date(), 'yyyy-MM-dd');
 
         $scope.tipo = "Tipo";
-        $scope.dia = new Date();
+        $scope.diaActual = new Date();
         $scope.sendto = "Sendto";
       
-       
 	//Crear un uevo metodo controller para sumar todos los tipos de tickets guardados       
 
 		$scope.sumaTypeTotal = function(){
@@ -93,14 +92,11 @@ angular.module('tickets', ['nvd3'])
 				$scope.createProm=0;
 				$scope.totalTicketProm= 0;
 
-
 		   angular.forEach($scope.tickets,function(value){
 				
                  $scope.creadoDia = value.creado;
 				
-                 $scope.creadoDia = $filter('date')(new Date($scope.creadoDia), 'yyyy-MM-dd');	
-				
-              
+                 $scope.creadoDia = $filter('date')(new Date($scope.creadoDia), 'yyyy-MM-dd');	 
               
               	$scope.totalTicket +=1;
 
@@ -123,9 +119,6 @@ angular.module('tickets', ['nvd3'])
 				 break;
 			  
 				}
-
-		
-
 
             });
 		 	//se crea los porcentajes en base ala suma de cada tipo de tiquete
@@ -186,7 +179,6 @@ angular.module('tickets', ['nvd3'])
 				}
 
 		}
-
 
             });
 		 	//se crea los porcentajes en base ala suma de cada tipo de tiquete
