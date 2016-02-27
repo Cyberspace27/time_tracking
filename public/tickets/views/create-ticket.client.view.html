@@ -118,9 +118,9 @@
 					   	</thead>
 						<tbody>
 					   		<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaTypeDia()"  style="background-color:{{$even?'white':'white'}}"  >
-									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
-									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
-									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
+									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}} <span ng-hide="true">id =</span></td>
+									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}} <span ng-hide="true"> = </span></a></td>
+									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}<span ng-hide="true"> min</span></td>
 									<td>{{ticket.tipo}}</td>
 									<td >{{ticket.sendto}}</td>
 									<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>

@@ -16,6 +16,7 @@ specialElementHandlers = {
 
 pdf.setFontSize(20);
 pdf.text(60, 40, "Lista de tickets creados en la fecha");
+
 pdf.setFontSize(10);
 pdf.text(60, 60, "Fecha : "+diaActual);
 margins = {
