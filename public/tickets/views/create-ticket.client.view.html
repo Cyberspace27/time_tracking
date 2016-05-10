@@ -187,12 +187,16 @@
 						
 					</div>
 
-					<div class="row" id="ocultarBtn">
+					<div class="row" id="slideshow2">
 						<div class="col-md-12">
 							<br/>
-							<div align="center" ><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a></div>
+							<div align="center" ><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a>&nbsp;  <a class="btn btn-info" id="popupTickets2" type="button" href="javascript:abrirImagen()">&nbsp;Copiar Tickets&nbsp;&nbsp;</a></div>
+
 						</div>
 					</div>
+						<div id="slideshow">
+								<div id="popupTickets" alt="" width="200" height="120" title="trabajo1" >nsdhbshcbsh hsdsbdcdb</div>
+			            </div><!--slideshow-->		
 				</div>
 			    
 			</div>
@@ -200,7 +204,22 @@
 
 		</div>
 
-	</div>
+		<!-- Este es el popup q se va amostrar-->
+		<div id="previewSlideshow">
+			<div id='imagen'>
+				<div id='popupTickets' src='' width='700' height='401'/>
+		
+					<ul   style="text-align:center">
+						<li ng-repeat="ticket in tickets | filtroDate "> <strong> Id = {{ticket.ticketId}} = {{ticket.tiempo}} min // Tipo : {{ticket.tipo}}</strong></li>					
+					</ul>
+	
+					<div id="cerrar"><h1>Cerrar</h1></div>
+
+				</div>
+			</div>
+		</div><!--Fin del popou-->
+
+	</div><!--Fin del container-->
 
 </section>
 
