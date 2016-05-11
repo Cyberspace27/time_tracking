@@ -1,18 +1,16 @@
-$(document).on("ready", main);
-
 function main(){
-	//$("body").append("<div id='cerrar'>Cerrar</div>");
+	$("body").append("<div id='descripcion'></div>");
 	
 	$("#popupTickets").on("click", abrirImagen);
 	$("#cerrar").on("click",cerrarImagen);
-	console.log("Entre en el slideshow");
+	
 
 }
 function  abrirImagen(){
 	$("#previewSlideshow").fadeIn();
 	$("#previewSlideshow popupTickets");
-	//$("#previewSlideshow #descripcion");
-	console.log("Entre al metodo slideshow");
+	$("#previewSlideshow #descripcion").text($(this).attr("title"));
+	
 }
 function cerrarImagen(){
 	$("#previewSlideshow").fadeOut();

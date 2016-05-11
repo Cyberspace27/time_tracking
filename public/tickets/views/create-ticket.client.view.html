@@ -118,9 +118,9 @@
 					   	</thead>
 						<tbody>
 					   		<tr ng-repeat="ticket in tickets | filtroDate "  on-finish-render="sumaTypeDia()"  style="background-color:{{$even?'white':'white'}}"  >
-									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}} <span ng-hide="true">id =</span></td>
-									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}} <span ng-hide="true"> = </span></a></td>
-									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}<span ng-hide="true"> min</span></td>
+									<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
+									<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
+									<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
 									<td>{{ticket.tipo}}</td>
 									<td >{{ticket.sendto}}</td>
 									<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
@@ -190,13 +190,10 @@
 					<div class="row" id="slideshow2">
 						<div class="col-md-12">
 							<br/>
-							<div align="center" ><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a>&nbsp;  <a class="btn btn-info" id="popupTickets2" type="button" href="javascript:abrirImagen()">&nbsp;Copiar Tickets&nbsp;&nbsp;</a></div>
+							<div align="center" ><a class="btn btn-success" type="button" href="javascript:pdfToHTML()">Generar Reporte</a>&nbsp;  <a class="btn btn-info" id="popupTickets" id="popupTickets" type="button" href="javascript:abrirImagen()" >&nbsp;Copiar Tickets&nbsp;&nbsp;</a></div>
 
 						</div>
-					</div>
-						<div id="slideshow">
-								<div id="popupTickets" alt="" width="200" height="120" title="trabajo1" >nsdhbshcbsh hsdsbdcdb</div>
-			            </div><!--slideshow-->		
+					</div>	
 				</div>
 			    
 			</div>
@@ -207,13 +204,15 @@
 		<!-- Este es el popup q se va amostrar-->
 		<div id="previewSlideshow">
 			<div id='imagen'>
-				<div id='popupTickets' src='' width='700' height='401'/>
+				<div id='popupTickets'  align="center"  src='' width='700' height='401'/>
 		
-					<ul   style="text-align:center">
-						<li ng-repeat="ticket in tickets | filtroDate "> <strong> Id = {{ticket.ticketId}} = {{ticket.tiempo}} min // Tipo : {{ticket.tipo}}</strong></li>					
+					<ul class="listaTickets"  style="text-align:center"> 
+						<li style="list-style:none;text-align: left;" ng-repeat="ticket in tickets | filtroDate "> <strong> Id = {{ticket.ticketId}} = {{ticket.tiempo}} min // Tipo : {{ticket.tipo}}</strong></li>					
 					</ul>
-	
-					<div id="cerrar"><h1>Cerrar</h1></div>
+
+					<div id="descripcion">Copiar en TimerTick</div>
+
+					<div id="cerrar"  onclick="javascript:cerrarImagen()">Cerrar</div>
 
 				</div>
 			</div>
