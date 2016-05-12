@@ -69,7 +69,7 @@
 				<div ng-show="showTabla" id="tablaReporte">
 					<!--<form data-ng-submit="create()" data-ng-init="find()" novalidate> -->
 			     	<div class="input-group input-group-lg">
-				       <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText">
+				       <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" >
 				       <span class="input-group-btn">
 				        <button class="btn btn-default" type="button">Go!</button>
 				       </span>
@@ -92,7 +92,7 @@
 							<tr ng-repeat="ticket in tickets | filter:searchText"  on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
 								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
-								<td ng-init="$parent.sumatime = $parent.sumatime + ticket.tiempo">{{ticket.tiempo}}</td>
+								<td>{{ticket.tiempo}}</td>
 								<td>{{ticket.tipo}}</td>
 								<td>{{ticket.sendto}}</td>
 								<td><a class="btn btn-success" type="button" data-ng-href="#!/tickets/{{ticket._id}}">Action</a>
@@ -133,7 +133,7 @@
 										<th scope="row">Tiempo Registrado</th>
 										<td></td>
 										<td></td>
-										<td>{{sumatime}}</td>
+										<td>{{TotalSumTiempo}}</td>
 										<td>min</td>
 									</tr>
 
@@ -144,7 +144,7 @@
 										<td width="10" height="10">{{createCant||0}}</td>
 										<td width="10" height="10">{{healdCant||0}}</td>
 										<td width="10" height="10">{{fixedCant||0}}</td>
-										<td width="10" height="10">{{numTickDia||0}}</td>
+										<td width="10" height="10">{{TotalSumTicket||0}}</td>
 									</tr>
 									<tr> 
 										<th width="10" height="10" scope="row"><b>Min %</b></th>

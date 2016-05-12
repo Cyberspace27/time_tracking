@@ -77,7 +77,7 @@ angular.module('tickets', ['nvd3'])
         $scope.diaActual = new Date();
         $scope.sendto = "Sendto";
       
-	//Crear un uevo metodo controller para sumar todos los tipos de tickets guardados       
+			//Crear un uevo metodo controller para sumar todos los tipos de tickets guardados       
 
 		$scope.sumaTypeTotal = function(){
 			//Iniciar variables 'fixed, heald, crear' con valor de 0  para llevar cuenta de los tiquetes
@@ -90,7 +90,11 @@ angular.module('tickets', ['nvd3'])
 				$scope.fixedProm=0;
 				$scope.healdProm=0;
 				$scope.createProm=0;
-				$scope.totalTicketProm= 0;
+
+			//Variable para llevar la Suma Total de los Tiempos todos los tickets
+			$scope.TotalSumTiempo =0;
+			//Variable para llevar la Suma Total de cuanto es la cantidad total de tickets existentes
+			$scope.TotalSumTicket =0;
 
 		   angular.forEach($scope.tickets,function(value){
 				
@@ -105,30 +109,49 @@ angular.module('tickets', ['nvd3'])
 		   		{
 	 
 				case "create":
+					//se cargar de uno en uno todos los tickets de tipo creacion que ahi dentro de la BD
 				  	$scope.createCant = $scope.createCant+1;
+				  	//Se carga y se suma los tiempos de los tickes de tipo creacion que ahi dentro de la BD
 				  	$scope.createProm += value.tiempo;
 		
 				  break;
 				case "heald":
+				//se cargar de uno en uno todos los tickets de tipo heald que ahi dentro de la BD
 					$scope.healdCant= $scope.healdCant+1;
+				//Se carga y se suma los tiempos de los tickes de tipo heald que ahi dentro de la BD
 				  $scope.healdProm += value.tiempo;	
 				 break;
 				case "fix":
-					$scope.fixedCant= $scope.fixedCant+1;
+				//Se carga y se suma los tiempos de los tickes de tipo fix que ahi dentro de la BD
+					$scope.fixedCant = $scope.fixedCant+1;
+
 					$scope.fixedProm += value.tiempo;	
 				 break;
 			  
 				}
 
             });
-		 	//se crea los porcentajes en base ala suma de cada tipo de tiquete
+		
+			//se crea la suma de todos los tipos de diferentes embase a la suma de cada tipo de tiquete
+		  
+			$scope.TotalSumTiempo = $scope.fixedProm + $scope.healdProm + $scope.createProm;
+
+			//se crea la suma de todos los tipos de diferentes embase a la suma de cada tipo de tiquete
+		 	 $scope.TotalSumTicket  = $scope.createCant + $scope.healdCant + $scope.fixedCant;
+
+
+		 	//se crea los porcentajes en base ala suma del tiempo y cantidad de cada tipo de tiquete
 		   $scope.createProm = $scope.createProm / $scope.createCant;
 			
 			$scope.healdProm = $scope.healdProm / $scope.healdCant;
 			
 			$scope.fixedProm = $scope.fixedProm / $scope.fixedCant;
-			//	console.log("sumatime : ", $scope.sumatime, " + numTickDia : ",$scope.numTickDia );
-			$scope.totalTicketProm = $scope.sumatime / $scope.numTickDia ;
+			
+			//Se carga la variable 'totalTicketProm' con el porcentaje total que da como resultado de la suma total del tiempo entre el numero total de tickets
+			
+			$scope.totalTicketProm = $scope.TotalSumTiempo / $scope.TotalSumTicket ;
+			
+			
  
 		};
 		      
@@ -147,7 +170,7 @@ angular.module('tickets', ['nvd3'])
 				$scope.createProm=0;
 				$scope.totalTicketProm= 0;
 
-
+				//Iniciamos el siglo angular.forEach para cargar los valores dentro de la variables
 		   angular.forEach($scope.tickets,function(value){
 				
                  $scope.creadoDia = value.creado;

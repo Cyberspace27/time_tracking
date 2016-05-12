@@ -9,7 +9,7 @@ function main(){
 function  abrirImagen(){
 	$("#previewSlideshow").fadeIn();
 	$("#previewSlideshow popupTickets");
-	$("#previewSlideshow #descripcion").text($(this).attr("title"));
+	
 	
 }
 function cerrarImagen(){
