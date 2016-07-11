@@ -39,8 +39,10 @@ angular.module('tickets', ['nvd3'])
      {
      	//Se creauna variable 'diaActual' y se inicicializa con el valor de la fecha actual en una zona horaria adecuada 
         var diaActual = $filter('date')(new Date(), 'yyyy-MM-dd');
+        //var diaActual2 = $filter('date')(new Date(), '2016-06-03');
   
         var salida = [];
+        //console.log(diaActual)
 
         //se inicia el siglo para recorrer el array de tiquetes 
         for( var i=0; i<input.length; i++) {

@@ -7,8 +7,11 @@ var config = require('./config'),
 //Defenir el metodo de configuracion de mongoose
 module.exports = function(){
 	//Usar mongoose para conectar a MongoDB
-	var db = mongoose.connect(config.db);
-
+	
+	//Esta es la linea original
+	//var db = mongoose.connect(config.db);
+    //linea sustituta
+    var db = mongoose.connect('mongodb://cyberspace27:1712aajj@ds027628.mlab.com:27628/time_tracking');
 	//Cargar el modelo "User"
 	require('../app/models/user.server.model');
 	//Cargar el modelo "Tickets"
