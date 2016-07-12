@@ -5,6 +5,11 @@ var mongoose = require('./config/mongoose'),
 var db = mongoose();
 var app = express();
 var passport = passport();
-app.listen(3000);
+
+var port = Number(process.env.PORT||3000)
+
+server.listen(port);
+
+app.listen(port);
 module.exports = app;
 console.log('Servidor Ejecutandose en http://locahost:3000/');
