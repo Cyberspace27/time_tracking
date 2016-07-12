@@ -2,10 +2,10 @@
 	"name" : "TIME_TRACKING",
 	"version": "1.0.0",
   "description": "App para registrar el tiempo invertido en la resolucion de tickets ",
-  "main": "server.js",
+  "main": "index.ejs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.ejs"
   },
 "author": "Ariel V C",
   "license": "ISC",
