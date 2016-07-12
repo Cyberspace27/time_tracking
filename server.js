@@ -8,8 +8,6 @@ var passport = passport();
 
 var port = Number(process.env.PORT||3000)
 
-server.listen(port);
-
 app.listen(port);
 module.exports = app;
 console.log('Servidor Ejecutandose en http://locahost:3000/');
