@@ -2,7 +2,7 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets', ['nvd3'])
+angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
 .directive('onFinishRender', function () {
     return {
         restrict: 'A',        
@@ -40,24 +40,30 @@ angular.module('tickets', ['nvd3'])
      	//Se creauna variable 'diaActual' y se inicicializa con el valor de la fecha actual en una zona horaria adecuada 
         var diaActual = $filter('date')(new Date(), 'yyyy-MM-dd');
         //var diaActual2 = $filter('date')(new Date(), '2016-06-03');
+        
   
         var salida = [];
         //console.log(diaActual)
 
         //se inicia el siglo para recorrer el array de tiquetes 
         for( var i=0; i<input.length; i++) {
+
+
         	//se crea una variable 'dataArray' y se le carga el valor del objeto 'tiquete' con sus datos individuales
           	var dataArray = input[i];
           	//se crear una variable 'creado' y se le inicializa con el valor de la fecha en la que el tiquete se creo
         	var creado = dataArray.creado;	
+
+
         	//Se crea una vaiable 'diaTickete' y se inicializa con la fecha del tiquete con un formato de zona horaria adecuado
         	var diaTickete = $filter('date')(new Date(creado), 'yyyy-MM-dd');	
-
+        	
         	//console.log("ID Tickete : ", dataArray.ticketId);
             //Se crea una condicion para validar si el ticket es del dia actual
         	if (diaActual == diaTickete ) {   
         		//si el ticket es del dia actual lo agrega  
         	        salida.push(dataArray);
+
               }
 
          }
@@ -78,6 +84,13 @@ angular.module('tickets', ['nvd3'])
         $scope.tipo = "Tipo";
         $scope.diaActual = new Date();
         $scope.sendto = "Sendto";
+
+        //Metodo de prueba para ver si la pagination esta funcionando
+        $scope.sort = function(keyname){
+		$scope.sortKey = keyname;   //set the sortKey to the param passed
+		$scope.reverse = !$scope.reverse; //if true make it false and vice versa
+
+		}
       
 			//Crear un uevo metodo controller para sumar todos los tipos de tickets guardados       
 

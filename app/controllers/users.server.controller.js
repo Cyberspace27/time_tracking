@@ -1,4 +1,4 @@
-// Invocar el modo 'strict'
+// Invocar el modo 'strict' 
 'use strict';
 
 // Cargar el módulo dependencies

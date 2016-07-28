@@ -1,6 +1,6 @@
 //Invocar modo JavaScript 'strict'
-
 'use strict';
+
 //Cargar las dependencias del modulo
 var users = require('../../app/controllers/users.server.controller'),
     tickets = require('../../app/controllers/tickets.server.controller');

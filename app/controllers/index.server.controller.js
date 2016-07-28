@@ -1,5 +1,5 @@
-//Invocar el modo JavaScript 'strict'
-'use strict'
+// Invocar el modo 'strict' 
+'use strict';
 
 //Crear un nuevo metodo controller 'render'
 exports.render = function(req, res){

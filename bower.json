@@ -1,11 +1,12 @@
 {
-	"name": "TIME_TRACKIGN",
+	"name": "Time_tracking_heroku_v3",
 	"version": "0.0.1",
 	"dependencies": {
 		"angular": "~1.2",
 		"angular-route": "~1.2",
 		"angular-resource": "~1.2",
-		"ng-grid":"~2.0.14"
+		"ng-grid":"~2.0.14",
+		"dirPagination":"1.0.0"
 
 	}
 }

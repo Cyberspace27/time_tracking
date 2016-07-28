@@ -1,5 +1,3 @@
-//Invocar el modo JavaScript 'strict'
-'use strict';
 
 //Carga las dependencias del modulo
 var config = require('./config'),

@@ -58,7 +58,7 @@
 		 	<div class="col-md-8">
 		 		<input ng-init="showTabla=true" type="checkbox" ng-model="showTabla" ng-click="showGraficas=false"/>Mostrar Tabla &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="checkbox" ng-model="showGraficas" ng-click="showTabla=false"/>Mostrar Estadisticas Graficas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" ng-model="showReportes"  value="bird" disabled />Especificar Criterio
+				<input type="checkbox" ng-model="showReportes"  ng-click="showReportes=true" />Especificar Criterio
 		     	<br /><br />
 		     	<div  ng-hide="!showGraficas" id="graficasReporte">		   
 		     		<h2 align="center">Grafico de Prueba</h2>
@@ -79,7 +79,9 @@
 				<table class="table table-striped table-condensed">
 					<thead>
 					<tr>
-						<th>#</th>
+						<th ng-click="sort('id')">#
+								<span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
 						<th>ID Ticket</th>
 						<th>Time</th>
 						<th>Type</th>
@@ -89,7 +91,7 @@
 
 				   	</thead>
 					<tbody>
-							<tr ng-repeat="ticket in tickets | filter:searchText"  on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
+							<tr dir-paginate="ticket in tickets|filter:searchText|itemsPerPage:20" on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
 								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
 								<td>{{ticket.tiempo}}</td>
@@ -100,6 +102,12 @@
 							</tr>
 					</tbody>
 				</table>
+				<!--Controles de la paginacion-->
+				<dir-pagination-controls
+                    max-size="20"
+                    direction-links="true"
+                    boundary-links="true" >
+                </dir-pagination-controls>
 				
 				<!--El elemento mensaje error-->	
 					<div data-ng-show="error">

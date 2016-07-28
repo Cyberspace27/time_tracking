@@ -1,4 +1,4 @@
-//Invocar modo Javascript 'strict'
+// Invocar el modo 'strict' 
 'use strict';
 
 //Cargar las dependecians del modulo
@@ -40,8 +40,14 @@ exports.create = function(req, res){
 };
 //Crear un nuevo metodo controller que recupera una lista de tickets
 exports.list = function(req, res){
+	//Crear un nuevo objeto ticket
+	var ticket = new Ticket(req.body);
+
+	//Configurar la propiedad 'creador' del ticket
+	ticket.creador = req.user;
+
 	//Usar el metodo model 'find' para optener una lista de tickets
-	Ticket.find().sort('-created').populate('creador', 'firstName ').exec(function(err, tickets){
+	Ticket.find({"creador":ticket.creador}).sort('-created').populate('creador', 'firstName ').exec(function(err, tickets){
 		if(err){
 			//Si un error ocurre enviar un mensaje de error
 			return res.status(400).send({
