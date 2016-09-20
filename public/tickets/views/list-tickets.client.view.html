@@ -58,7 +58,7 @@
 		 	<div class="col-md-8">
 		 		<input ng-init="showTabla=true" type="checkbox" ng-model="showTabla" ng-click="showGraficas=false"/>Mostrar Tabla &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="checkbox" ng-model="showGraficas" ng-click="showTabla=false"/>Mostrar Estadisticas Graficas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="checkbox" ng-model="showReportes"  ng-click="showReportes=true" />Especificar Criterio
+				<input ng-init="showReportes=true" type="checkbox" ng-model="showReportes"   ng-click="showReportes=true" />Especificar Criterio
 		     	<br /><br />
 		     	<div  ng-hide="!showGraficas" id="graficasReporte">		   
 		     		<h2 align="center">Grafico de Prueba</h2>
@@ -66,7 +66,72 @@
 				</div>
 
 
+				
+			<!--Modulo de busqued especificada-->
+
+				<div ng-show="showReportes" id="showReportes">
+					<!-- CODIGO DE PRUEBA PARA IMPLEMENTAR EL DATE PICKER-->
+
+					<!--
+					<pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+				    <h4>Inline</h4>
+				    <div style="display:inline-block; min-height:290px;">
+				      <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+				    </div>
+
+				    <hr />
+				    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+				    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+				    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+				    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+					-->
+
+				    <!--OPCION 2 DATEPPICKER POPOP -->
+
+				    <pre ng-model="searchPrueba1">Fecha Inicial es: <em>{{dt | date:'yyyy-MM-dd' }} == </em>Fecha Final es: <em>{{dt | date:'yyyy-MM-dd'}}</em></pre>
+				    
+				    
+				    
+				    <div class="row">
+				      <div class="col-md-6">
+				      	<h4>Fecha Inicio</h4>
+				        <p class="input-group">
+				          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+				          <span class="input-group-btn">
+				            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+				          </span>
+				        </p>
+				      </div>
+				      <div class="col-md-6">
+				      	<h4>Fecha Final</h4>
+				        <p class="input-group">
+				          <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+				          <span class="input-group-btn">
+				            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+				          </span>
+				        </p>
+				      </div>
+				    </div>
+				    <div class="row">
+				      <div class="col-md-6">
+				        <label>Format: <span class="muted-text">(manual alternate <em>{{altInputFormats[0]}}</em>)</span></label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+				      </div>
+				    </div>
+
+				    <hr />
+				    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+				    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+				    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+
+
+				</div><!--Fin del DATE PICKER DE PRUEBA-->
+
+				<!--INICIO DE LA TABLA REPORTE-->
+				
+				
 				<div ng-show="showTabla" id="tablaReporte">
+				<br/>
 					<!--<form data-ng-submit="create()" data-ng-init="find()" novalidate> -->
 			     	<div class="input-group input-group-lg">
 				       <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText" >
@@ -91,7 +156,7 @@
 
 				   	</thead>
 					<tbody>
-							<tr dir-paginate="ticket in tickets|filter:searchText|itemsPerPage:20" on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
+							<tr   dir-paginate="ticket in tickets|filter:dateIni|itemsPerPage:20|filter:searchText" on-finish-render-tot="sumaTypeTotal()"  style="background-color:{{$even?'white':'white'}}"  >
 								<td  ng-init="$parent.numTickDia = $parent.numTickDia+1">{{$index+1}}</td>
 								<td ><a href="https://aggcentral.indeed.com/display/?type=feed&id={{ticket.ticketId}}" target="_blank">{{ticket.ticketId}}</a></td>
 								<td>{{ticket.tiempo}}</td>
@@ -115,8 +180,8 @@
 					</div>
 
 				<!--</form>-->
-				</div>
-				
+				</div>		
+				<!--Fin de la tabla reporte-->		
 				
 			</div><!--Fin del div de class="col-md-8"-->	
 

@@ -2,7 +2,7 @@
 
 'use strict';
 //Crear el controller 'ticket'
-angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
+angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination','ngAnimate', 'ngSanitize', 'ui.bootstrap'])
 .directive('onFinishRender', function () {
     return {
         restrict: 'A',        
@@ -57,6 +57,7 @@ angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
 
         	//Se crea una vaiable 'diaTickete' y se inicializa con la fecha del tiquete con un formato de zona horaria adecuado
         	var diaTickete = $filter('date')(new Date(creado), 'yyyy-MM-dd');	
+
         	
         	//console.log("ID Tickete : ", dataArray.ticketId);
             //Se crea una condicion para validar si el ticket es del dia actual
@@ -327,6 +328,194 @@ angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
 
 		};
 
+		//ESTE CODIGO ES DE PRUEBA PARA EL DATE PICKER
+
+/*
+		$scope.today = function() {
+		    $scope.dt = new Date();
+		  };
+		  $scope.today();
+
+		  $scope.clear = function() {
+		    $scope.dt = null;
+		  };
+
+		  $scope.options = {
+		    customClass: getDayClass,
+		    minDate: new Date(),
+		    showWeeks: true
+		  };
+
+		  // Disable weekend selection
+		  function disabled(data) {
+		    var date = data.date,
+		      mode = data.mode;
+		    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+		  }
+
+		  $scope.toggleMin = function() {
+		    $scope.options.minDate = $scope.options.minDate ? null : new Date();
+		  };
+
+		  $scope.toggleMin();
+
+		  $scope.setDate = function(year, month, day) {
+		    $scope.dt = new Date(year, month, day);
+		  };
+
+		  var tomorrow = new Date();
+		  tomorrow.setDate(tomorrow.getDate() + 1);
+		  var afterTomorrow = new Date(tomorrow);
+		  afterTomorrow.setDate(tomorrow.getDate() + 1);
+		  $scope.events = [
+		    {
+		      date: tomorrow,
+		      status: 'full'
+		    },
+		    {
+		      date: afterTomorrow,
+		      status: 'partially'
+		    }
+		  ];
+
+		  function getDayClass(data) {
+		    var date = data.date,
+		      mode = data.mode;
+		    if (mode === 'day') {
+		      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+		      for (var i = 0; i < $scope.events.length; i++) {
+		        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+		        if (dayToCheck === currentDay) {
+		          return $scope.events[i].status;
+		        }
+		      }
+		    }
+		    return '';
+		  }
+*/
+//FIN DE DATEPICKER PRUEBA 1
+
+        //-------------------------------------------------------------------------------------
+
+        //SEGUNDA PRUEBA DEL DATEPICKER "POPOP DATEPICKER"
+
+        $scope.today = function() {
+		    $scope.dt = new Date();
+		  };
+		  $scope.today();
+
+		  $scope.clear = function() {
+		    $scope.dt = null;
+		  };
+
+		  $scope.inlineOptions = {
+		    customClass: getDayClass,
+		    minDate: new Date(),
+		    showWeeks: true
+		  };
+
+		  $scope.dateOptions = {
+		    dateDisabled: disabled,
+		    formatYear: 'yy',
+		    maxDate: new Date(2020, 5, 22),
+		    minDate: new Date(),
+		    startingDay: 1
+		  };
+
+		  // Disable weekend selection
+		  function disabled(data) {
+		    var date = data.date,
+		      mode = data.mode;
+		    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+		  }
+
+		  $scope.toggleMin = function() {
+		    $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+		    $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+		  };
+
+		  $scope.toggleMin();
+
+		  $scope.open1 = function() {
+		    $scope.popup1.opened = true;
+		  };
+
+		  $scope.open2 = function() {
+		    $scope.popup2.opened = true;
+
+		  };
+
+		  $scope.setDate = function(year, month, day) {
+		    $scope.dt = new Date(year, month, day);
+
+		  };
+
+		  $scope.formats = ['dd-MMMM-yyyy', 'yyyy-MM-dd' , 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		  $scope.format = $scope.formats[1];
+		  $scope.formatPrueba ='2016-07-15';
+		  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+		  $scope.popup1 = {
+		    opened: false
+		  };
+
+		  $scope.popup2 = {
+		    opened: false
+		  };
+
+		  var tomorrow = new Date();
+		  tomorrow.setDate(tomorrow.getDate() + 1);
+		  var afterTomorrow = new Date();
+		  afterTomorrow.setDate(tomorrow.getDate() + 1);
+		  $scope.events = [
+		    {
+		      date: tomorrow,
+		      status: 'full'
+		    },
+		    {
+		      date: afterTomorrow,
+		      status: 'partially'
+		    }
+		  ];
+
+		  function getDayClass(data) {
+		    var date = data.date,
+		      mode = data.mode;
+		    if (mode === 'day') {
+		      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+		      for (var i = 0; i < $scope.events.length; i++) {
+		        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+		        if (dayToCheck === currentDay) {
+		          return $scope.events[i].status;
+		        }
+		      }
+
+		    }
+
+		    
+
+		    return '';
+		    
+		  } 
+
+		  //Funcion watch para crear el filtro cada ves que se selecione una nueva fecha
+		  $scope.$watch('dt', function(newValue, oldValue){
+
+		  		$scope.creadoDia4 = $filter('date')(new Date($scope.creadoDia4), 'fullDate');
+		  		$scope.dateIni = $filter('date')(new Date(newValue), 'yyyy-MM-dd');
+		    	console.log("Dentro de la funcion watch " + $scope.dateIni);
+		    	console.log("Dentro de la funcion watch " + $scope.creadoDia4);  
+
+
+		  });
+
+		  //FIN DE LA PRUEBA 2 DEL DATAPICKER POPOP
+
+/*
 		// crear un nuevo metodo controller invocando el metodo init para sumar los tiempos de los tickest
 		var init = function(){
 			//$scope.tickets = Tickets.query();
@@ -345,9 +534,10 @@ angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
 		}
 		//We init the app
 		init();
+*/
 
-
-        //INICIO DE LA GONFIGURACION PARA LA PRUEBA DE LOS GRAFICOS
+        //INICIO DE LA GONFIGURACION PARA LA PRUEBA DE LOS GRAFICOS PRUEBA 1
+        
          $scope.options = {
             chart: {
                 type: 'candlestickBarChart',
@@ -391,6 +581,7 @@ angular.module('tickets', ['nvd3','angularUtils.directives.dirPagination'])
             }
             
         };
+        
 
     $scope.data = [{values: [
         {"date": 15854, "open": 165.42, "high": 165.8, "low": 164.34, "close": 165.22, "volume": 160363400, "adjusted": 164.35},
